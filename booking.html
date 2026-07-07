@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservations — Hostera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="guest.css">
+</head>
+<body class="gbody">
+
+<header class="gnav">
+  <div class="wrap gnav-row">
+    <a href="explore.html" class="logo"><span class="logo-mark" aria-hidden="true"></span>Hostera</a>
+    <nav class="gnav-links" aria-label="Guest">
+      <a href="explore.html">Explore</a>
+      <a href="events.html">Events</a>
+      <a href="table-moments.html">Table Moments</a>
+      <a href="taste-profile.html">Taste Profile</a>
+    </nav>
+    <div class="gnav-right">
+      <div class="grel">
+        <button class="gicon-btn" id="gNotifBtn" aria-label="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <span class="gbadge" data-notif-count>3</span>
+        </button>
+        <div class="gmenu" id="gNotifMenu" data-open="false" style="width:300px;">
+          <a href="booking.html#mybookings"><span>Nightjar confirmed your table for Jul 11, 7:30 PM</span></a>
+          <a href="events.html"><span>New event at Sable Point: Sunset Oyster Hour</span></a>
+          <a href="private-dining.html"><span>Tallow & Salt sent a private dining proposal</span></a>
+        </div>
+      </div>
+      <div class="gaccount">
+        <button class="gavatar-btn" id="gAvatarBtn"><span class="gavatar" data-guest-initials>EM</span><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></button>
+        <div class="gmenu" id="gAccountMenu" data-open="false">
+          <a href="booking.html#mybookings">My Reservations</a>
+          <a href="private-dining.html">Private Dining</a>
+          <a href="profile.html">Profile &amp; Settings</a>
+          <hr>
+          <a href="index.html">Sign out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="gwrap">
+  <div class="gpage-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+    <div>
+      <p class="gpage-eyebrow">Reservations</p>
+      <h1 class="gpage-title" id="pageTitle">Book a table</h1>
+    </div>
+    <div class="gtabs" data-gtabs data-panels-in="#bookingRoot">
+      <button class="gtab active" data-tab="new">New reservation</button>
+      <button class="gtab" data-tab="mine">My reservations</button>
+    </div>
+  </div>
+
+  <div id="bookingRoot">
+
+    <div data-tab-panel="new">
+      <div class="stepper" id="stepper">
+        <div class="step-dot active" data-step-dot="1">1</div><div class="step-line"></div>
+        <div class="step-dot" data-step-dot="2">2</div><div class="step-line"></div>
+        <div class="step-dot" data-step-dot="3">3</div><div class="step-line"></div>
+        <div class="step-dot" data-step-dot="4">4</div>
+      </div>
+
+      <div class="booking-layout" id="flowLayout">
+        <div>
+          <div class="bstep-panel" data-step="1">
+            <h2>When &amp; how many</h2>
+            <div class="bfield" id="restaurantPickWrap">
+              <label>Restaurant</label>
+              <select class="gselect" id="restaurantPick" style="width:100%;"></select>
+            </div>
+            <div class="bfield-row">
+              <div class="bfield"><label>Date</label><input type="date" id="fDate" value="2026-07-11"></div>
+              <div class="bfield"><label>Guests</label>
+                <div class="guest-counter"><button class="counter-btn" type="button" id="gMinus">–</button><span class="counter-val" id="gVal">2</span><button class="counter-btn" type="button" id="gPlus">+</button></div>
+              </div>
+            </div>
+            <div class="bfield"><label>Time</label>
+              <div class="time-grid" id="timeGrid"></div>
+            </div>
+          </div>
+
+          <div class="bstep-panel" data-step="2" style="display:none;">
+            <h2>Seating preference <span style="font-weight:400;color:var(--ink-soft);font-size:13px;">(optional)</span></h2>
+            <div class="chip-select" id="seatingChips">
+              <button class="gchip" data-seat="Any">Any available</button>
+              <button class="gchip" data-seat="Indoor">Indoor</button>
+              <button class="gchip" data-seat="Outdoor patio">Outdoor patio</button>
+              <button class="gchip" data-seat="Bar seating">Bar seating</button>
+              <button class="gchip" data-seat="Private booth">Private booth</button>
+            </div>
+          </div>
+
+          <div class="bstep-panel" data-step="3" style="display:none;">
+            <h2>Occasion &amp; notes</h2>
+            <div class="bfield">
+              <label>Occasion (optional)</label>
+              <div class="chip-select" id="occasionChips">
+                <button class="gchip" data-occasion="None">None</button>
+                <button class="gchip" data-occasion="Birthday">Birthday</button>
+                <button class="gchip" data-occasion="Anniversary">Anniversary</button>
+                <button class="gchip" data-occasion="Business">Business</button>
+                <button class="gchip" data-occasion="Date night">Date night</button>
+              </div>
+            </div>
+            <div class="bfield">
+              <label>Allergies or requests</label>
+              <textarea id="fNotes" rows="3" style="width:100%;font-family:inherit;border:1px solid var(--line);border-radius:var(--radius-s);padding:10px 12px;font-size:14px;" placeholder="Shellfish allergy, high chair needed, etc."></textarea>
+            </div>
+          </div>
+
+          <div class="bstep-panel" data-step="4" style="display:none;">
+            <h2>Review &amp; confirm</h2>
+            <div class="bsummary" id="reviewSummary" style="background:var(--white);border:1px solid var(--line);"></div>
+          </div>
+
+          <div class="bstep-panel" data-step="confirm" style="display:none;">
+            <div class="confirm-screen">
+              <div class="confirm-check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <h2>Table confirmed</h2>
+              <p class="menu-item-desc" id="confirmText" style="max-width:380px;margin:10px auto 24px;"></p>
+              <div style="display:flex;gap:12px;justify-content:center;">
+                <a class="btn btn-ghost" href="explore.html">Back to Explore</a>
+                <button class="btn btn-dark" id="viewMyBookings" type="button">View my reservations</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;margin-top:20px;" id="stepNav">
+            <button class="btn btn-ghost" id="stepBack" type="button">Back</button>
+            <button class="btn btn-dark" id="stepNext" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div class="bsummary" id="liveSummary">
+          <h4>Your reservation</h4>
+          <div id="liveSummaryBody"></div>
+        </div>
+      </div>
+    </div>
+
+    <div data-tab-panel="mine" style="display:none;">
+      <div class="gtabs" data-gtabs data-panels-in="#mineRoot" style="margin-bottom:20px;">
+        <button class="gtab active" data-tab="upcoming">Upcoming</button>
+        <button class="gtab" data-tab="past">Past</button>
+        <button class="gtab" data-tab="cancelled">Cancelled</button>
+      </div>
+      <div id="mineRoot">
+        <div class="booking-list" data-tab-panel="upcoming"></div>
+        <div class="booking-list" data-tab-panel="past" style="display:none;"></div>
+        <div class="booking-list" data-tab-panel="cancelled" style="display:none;"></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="guest-data.js"></script>
+<script src="guest.js"></script>
+<script>
+(function () {
+  var D = window.HOSTERA_DATA;
+  if (!D) return;
+
+  var restaurantPick = document.getElementById('restaurantPick');
+  restaurantPick.innerHTML = D.restaurants.map(function (r) { return '<option value="' + r.id + '">' + r.name + ' — ' + r.city + '</option>'; }).join('');
+  var presetId = Hostera.qs('id');
+  if (presetId) { restaurantPick.value = presetId; document.getElementById('restaurantPickWrap').style.display = 'none'; }
+
+  var times = ['5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM'];
+  document.getElementById('timeGrid').innerHTML = times.map(function (t, i) {
+    return '<button class="time-slot' + (i === 4 ? ' active' : '') + '" data-time="' + t + '" type="button">' + t + '</button>';
+  }).join('');
+
+  var state = { guests: 2, time: '7:30 PM', seating: 'Any', occasion: 'None' };
+
+  document.getElementById('gMinus').addEventListener('click', function () { state.guests = Math.max(1, state.guests - 1); document.getElementById('gVal').textContent = state.guests; updateLive(); });
+  document.getElementById('gPlus').addEventListener('click', function () { state.guests = Math.min(12, state.guests + 1); document.getElementById('gVal').textContent = state.guests; updateLive(); });
+  document.querySelectorAll('.time-slot').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.time-slot').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active'); state.time = btn.getAttribute('data-time'); updateLive();
+    });
+  });
+  document.querySelectorAll('[data-seat]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('[data-seat]').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active'); state.seating = btn.getAttribute('data-seat'); updateLive();
+    });
+  });
+  document.querySelectorAll('[data-occasion]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('[data-occasion]').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active'); state.occasion = btn.getAttribute('data-occasion'); updateLive();
+    });
+  });
+  restaurantPick.addEventListener('change', updateLive);
+  document.getElementById('fDate').addEventListener('change', updateLive);
+
+  function currentRestaurant() { return D.byId(restaurantPick.value); }
+  function updateLive() {
+    var r = currentRestaurant();
+    document.getElementById('liveSummaryBody').innerHTML =
+      '<div class="bsummary-row"><span>Restaurant</span><b>' + r.name + '</b></div>' +
+      '<div class="bsummary-row"><span>Date</span><b>' + Hostera.fmtDate(document.getElementById('fDate').value) + '</b></div>' +
+      '<div class="bsummary-row"><span>Time</span><b>' + state.time + '</b></div>' +
+      '<div class="bsummary-row"><span>Guests</span><b>' + state.guests + '</b></div>' +
+      '<div class="bsummary-row"><span>Seating</span><b>' + state.seating + '</b></div>';
+  }
+
+  var currentStep = 1;
+  function showStep(n) {
+    currentStep = n;
+    document.querySelectorAll('[data-step]').forEach(function (p) { p.style.display = 'none'; });
+    document.querySelector('[data-step="' + n + '"]').style.display = '';
+    document.querySelectorAll('[data-step-dot]').forEach(function (d) {
+      var s = parseInt(d.getAttribute('data-step-dot'), 10);
+      d.classList.toggle('active', s === n);
+      d.classList.toggle('done', s < n);
+    });
+    document.getElementById('stepBack').style.display = n === 1 ? 'none' : '';
+    document.getElementById('stepNext').textContent = n === 3 ? 'Review' : 'Continue';
+    document.getElementById('stepNav').style.display = n === 4 ? 'none' : 'flex';
+    if (n === 4) {
+      var r = currentRestaurant();
+      document.getElementById('reviewSummary').innerHTML =
+        '<div class="bsummary-row"><span>Restaurant</span><b>' + r.name + '</b></div>' +
+        '<div class="bsummary-row"><span>Date</span><b>' + Hostera.fmtDate(document.getElementById('fDate').value) + '</b></div>' +
+        '<div class="bsummary-row"><span>Time</span><b>' + state.time + '</b></div>' +
+        '<div class="bsummary-row"><span>Guests</span><b>' + state.guests + '</b></div>' +
+        '<div class="bsummary-row"><span>Seating</span><b>' + state.seating + '</b></div>' +
+        '<div class="bsummary-row"><span>Occasion</span><b>' + state.occasion + '</b></div>' +
+        '<div class="bsummary-row"><span>Deposit</span><b>None required</b></div>' +
+        '<button class="btn btn-accent btn-block btn-lg" id="confirmBtn" style="margin-top:16px;">Confirm reservation</button>';
+      document.getElementById('confirmBtn').addEventListener('click', function () {
+        var r2 = currentRestaurant();
+        document.getElementById('confirmText').textContent = 'You\u2019re booked at ' + r2.name + ' on ' + Hostera.fmtDate(document.getElementById('fDate').value) + ' at ' + state.time + ' for ' + state.guests + '. A confirmation has been sent to ' + D.guest.email + '.';
+        document.querySelectorAll('[data-step]').forEach(function (p) { p.style.display = 'none'; });
+        document.querySelector('[data-step="confirm"]').style.display = '';
+        document.getElementById('stepper').style.display = 'none';
+      });
+    }
+  }
+  document.getElementById('stepNext').addEventListener('click', function () { if (currentStep < 4) showStep(currentStep + 1); });
+  document.getElementById('stepBack').addEventListener('click', function () { if (currentStep > 1) showStep(currentStep - 1); });
+  document.getElementById('viewMyBookings').addEventListener('click', function () {
+    document.querySelector('[data-tab="mine"]').click();
+  });
+
+  updateLive();
+
+  /* ---- My Reservations ---- */
+  function bookingRow(b) {
+    var r = D.byId(b.restaurantId);
+    return '<div class="booking-row"><img src="' + r.hero + '" alt="">' +
+      '<div class="bwho"><p class="bname">' + r.name + '</p><p class="bwhen">' + Hostera.fmtDate(b.date) + ' &middot; ' + b.time + ' &middot; ' + b.guests + ' guests' + (b.occasion ? ' &middot; ' + b.occasion : '') + '</p></div>' +
+      '<span class="gstatus-pill ' + b.status + '">' + b.status + '</span>' +
+      (b.status === 'upcoming' ? '<div class="bactions"><a class="btn btn-ghost" href="restaurant.html?id=' + r.id + '">View</a></div>' : '') +
+      '</div>';
+  }
+  function renderMine() {
+    var groups = { upcoming: [], past: [], cancelled: [] };
+    D.bookings.forEach(function (b) { groups[b.status].push(b); });
+    ['upcoming', 'past', 'cancelled'].forEach(function (g) {
+      var el = document.querySelector('#mineRoot [data-tab-panel="' + g + '"]');
+      el.innerHTML = groups[g].length ? groups[g].map(bookingRow).join('') :
+        '<div class="gempty"><p>No ' + g + ' reservations yet.</p></div>';
+    });
+  }
+  renderMine();
+
+  if (window.location.hash === '#mybookings') document.querySelector('[data-tab="mine"]').click();
+
+  showStep(1);
+})();
+</script>
+</body>
+</html>

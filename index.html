@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hostera — Premium hospitality, connected</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a href="#" class="logo"><span class="logo-mark" aria-hidden="true"></span>Hostera</a>
+    <nav class="primary" aria-label="Primary">
+      <a href="#restaurants">For guests</a>
+      <a href="#partners">For restaurants</a>
+      <a href="#distributors">For distributors</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="nav-right">
+      <select class="lang-select" aria-label="Language">
+        <option>English</option>
+      </select>
+      <button class="btn btn-dark" id="openSignIn">Sign in</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Premium hospitality, connected</span>
+        <h1 class="hero-title">Find the table.<br>See the menu.<br><em>Know the room.</em></h1>
+        <p class="hero-sub">[Value proposition placeholder — one sentence on why guests, restaurants and distributors choose Hostera. To be finalized.]</p>
+        <div class="search-card" role="search">
+          <div class="search-field">
+            <label for="citySelect">City</label>
+            <select id="citySelect">
+              <option>New York, NY</option>
+              <option>Los Angeles, CA</option>
+              <option>San Francisco, CA</option>
+              <option>Miami, FL</option>
+              <option>Chicago, IL</option>
+            </select>
+          </div>
+          <div class="search-divider"></div>
+          <div class="search-field">
+            <label for="cuisineInput">Cuisine or restaurant</label>
+            <input id="cuisineInput" type="text" placeholder="Any cuisine">
+          </div>
+          <button class="search-go" aria-label="Search" onclick="sendPrompt && sendPrompt('Show me restaurants on Hostera')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="2"/><path d="M21 21L17 17" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="hero-actions" style="margin-top:28px;">
+          <a class="btn btn-ghost" href="#partners">List your restaurant</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="float-card c1">
+            <div style="position:relative;">
+              <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=900&auto=format&fit=crop" alt="Pilot restaurant dining room">
+              <span class="badge-rating">★ 4.9</span>
+            </div>
+            <div class="float-card-body">
+              <p class="name">[Pilot restaurant name]</p>
+              <p class="meta">New York, NY · Contemporary fine dining</p>
+            </div>
+          </div>
+          <div class="float-card c2">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=900&auto=format&fit=crop" alt="Wine list detail">
+            <div class="float-card-body">
+              <p class="name">Wine list, decoded</p>
+              <p class="meta">42 labels · live availability</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="signature-rule" role="presentation"></div>
+
+  <section id="restaurants" aria-labelledby="restaurants-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="section-label">On the platform</p>
+          <h2 class="section-title" id="restaurants-heading">Popular restaurants right now</h2>
+        </div>
+        <a class="link-more" href="#">Browse all<svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="rest-scroll">
+
+        <article class="rest-card">
+          <div class="rest-photo">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=700&auto=format&fit=crop" alt="">
+            <span class="tag">Featured pilot</span>
+          </div>
+          <div class="rest-body">
+            <div class="rest-top">
+              <p class="rest-name">[Restaurant name]</p>
+              <span class="rest-rating"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>4.9</span>
+            </div>
+            <p class="rest-loc">New York, NY</p>
+            <p class="rest-cuisine">Contemporary<span class="dot">·</span>Tasting menu<span class="dot">·</span>$$$$</p>
+          </div>
+        </article>
+
+        <article class="rest-card">
+          <div class="rest-photo">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=700&auto=format&fit=crop" alt="">
+          </div>
+          <div class="rest-body">
+            <div class="rest-top">
+              <p class="rest-name">[Restaurant name]</p>
+              <span class="rest-rating"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>4.8</span>
+            </div>
+            <p class="rest-loc">Los Angeles, CA</p>
+            <p class="rest-cuisine">Wine bar<span class="dot">·</span>Natural wine<span class="dot">·</span>$$$</p>
+          </div>
+        </article>
+
+        <article class="rest-card">
+          <div class="rest-photo">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=700&auto=format&fit=crop" alt="">
+          </div>
+          <div class="rest-body">
+            <div class="rest-top">
+              <p class="rest-name">[Restaurant name]</p>
+              <span class="rest-rating"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>4.9</span>
+            </div>
+            <p class="rest-loc">San Francisco, CA</p>
+            <p class="rest-cuisine">Pastry & cafe<span class="dot">·</span>Brunch<span class="dot">·</span>$$</p>
+          </div>
+        </article>
+
+        <article class="rest-card">
+          <div class="rest-photo">
+            <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?q=80&w=700&auto=format&fit=crop" alt="">
+          </div>
+          <div class="rest-body">
+            <div class="rest-top">
+              <p class="rest-name">[Restaurant name]</p>
+              <span class="rest-rating"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>4.7</span>
+            </div>
+            <p class="rest-loc">Miami, FL</p>
+            <p class="rest-cuisine">Steakhouse<span class="dot">·</span>Seafood<span class="dot">·</span>$$$$</p>
+          </div>
+        </article>
+
+        <article class="rest-card">
+          <div class="rest-photo">
+            <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=700&auto=format&fit=crop" alt="">
+          </div>
+          <div class="rest-body">
+            <div class="rest-top">
+              <p class="rest-name">[Restaurant name]</p>
+              <span class="rest-rating"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>4.8</span>
+            </div>
+            <p class="rest-loc">Chicago, IL</p>
+            <p class="rest-cuisine">Bar & lounge<span class="dot">·</span>Cocktails<span class="dot">·</span>$$$</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="map-heading">
+    <div class="wrap">
+      <div class="map-panel">
+        <div class="map-copy">
+          <p class="section-label">Coast to coast</p>
+          <h2 class="section-title" id="map-heading">Wherever the table is set</h2>
+          <p class="section-desc">Explore restaurants on Hostera across major US cities, with more added as our network grows.</p>
+          <div class="city-pills">
+            <span class="city-pill active">New York</span>
+            <span class="city-pill">Los Angeles</span>
+            <span class="city-pill">San Francisco</span>
+            <span class="city-pill">Miami</span>
+            <span class="city-pill">Chicago</span>
+            <span class="city-pill">Austin</span>
+          </div>
+        </div>
+        <div>
+          <svg class="usmap" viewBox="0 0 960 600" role="img" aria-label="Illustrative map of the United States with city markers for New York, Los Angeles, San Francisco, Miami, Chicago and Austin">
+            <path d="M120 180 L860 150 L880 380 L760 470 L640 500 L500 480 L380 510 L220 470 L100 400 Z" />
+            <circle class="city-dot pulse" cx="760" cy="220" r="7"/>
+            <circle class="city-dot" cx="150" cy="290" r="7"/>
+            <circle class="city-dot" cx="120" cy="240" r="7"/>
+            <circle class="city-dot" cx="790" cy="430" r="7"/>
+            <circle class="city-dot" cx="560" cy="270" r="7"/>
+            <circle class="city-dot" cx="430" cy="400" r="7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-section" aria-labelledby="trust-heading">
+    <div class="wrap trust-row">
+      <p class="trust-label" id="trust-heading">Trusted by leading houses</p>
+      <div class="trust-logos" aria-hidden="true">
+        <span>Maison Ètoile</span>
+        <span>Verdier</span>
+        <span>The Larder Co.</span>
+        <span>Solano House</span>
+        <span>Bramwell</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners" aria-labelledby="audience-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Built for every seat at the table</p>
+          <h2 class="section-title" id="audience-heading">One platform, three roles</h2>
+        </div>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="audience-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c4-4 7-7.5 7-11a7 7 0 10-14 0c0 3.5 3 7 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <h3>Guests</h3>
+          <p>Discover restaurants on Hostera, browse interactive menus, and see what's on the wine and bar list before you sit down.</p>
+          <a class="link-more" href="#restaurants">Explore as a guest<svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-7h6v7"/></svg>
+          </div>
+          <h3>Restaurants</h3>
+          <p>Bring your menu, wine list and bar program online with a single, premium-grade digital experience for guests.</p>
+          <a class="link-more" href="#apply">Add your restaurant<svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        </div>
+        <div class="audience-card" id="distributors">
+          <div class="audience-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="13" height="11" rx="1"/><path d="M16 10h3l2 3v5h-5"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg>
+          </div>
+          <h3>Distributors</h3>
+          <p>Connect your catalog directly to the restaurants you supply, in one shared, financial and operational space.</p>
+          <a class="link-more" href="#apply">Partner with Hostera<svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="apply-section" id="apply" aria-labelledby="apply-heading">
+    <div class="wrap apply-grid">
+      <div class="apply-copy">
+        <p class="section-label">Get started</p>
+        <h2 class="section-title" id="apply-heading">Bring your restaurant to Hostera</h2>
+        <p class="section-desc" style="margin-top:14px;max-width:100%;">Tell us a little about your restaurant or distribution business. Our team will follow up to scope a pilot together.</p>
+        <ul class="apply-list">
+          <li><span class="num">01</span>Submit your details below</li>
+          <li><span class="num">02</span>A member of our team reaches out within 2 business days</li>
+          <li><span class="num">03</span>We scope your digital menu and onboarding together</li>
+        </ul>
+      </div>
+
+      <form class="form-card" id="applyForm">
+        <h3>Request to join</h3>
+        <p class="form-sub">For restaurants and distributors. Existing users should sign in instead.</p>
+
+        <div class="field full" style="margin-bottom:14px;">
+          <label for="role">I am a</label>
+          <select id="role" required>
+            <option value="">Select one</option>
+            <option>Restaurant owner / manager</option>
+            <option>Restaurant group / chain</option>
+            <option>Distributor / supplier</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">First name</label>
+            <input id="fname" type="text" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="lname">Last name</label>
+            <input id="lname" type="text" required autocomplete="family-name">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="bizname">Business name</label>
+            <input id="bizname" type="text" required autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="city">City, state</label>
+            <input id="city" type="text" required placeholder="e.g. Los Angeles, CA">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" required autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field full" style="margin-bottom:0;">
+          <label for="notes">Anything we should know? (optional)</label>
+          <textarea id="notes" placeholder="Restaurant size, number of locations, current POS system..."></textarea>
+        </div>
+
+        <div class="consent-row">
+          <input type="checkbox" id="consent" required>
+          <label for="consent">I agree to the <a href="#privacy">Privacy Policy</a> and consent to Hostera contacting me about this request. California residents: see your <a href="#privacy">CCPA rights</a>.</label>
+        </div>
+
+        <button type="submit" class="btn btn-accent btn-block btn-lg">Submit request</button>
+        <p class="form-note">We'll never sell your information. Unsubscribe anytime.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site" id="about">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo"><span class="logo-mark" aria-hidden="true"></span>Hostera</a>
+        <p>[Company legal name placeholder] — premium hospitality, connected. Based in California.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#restaurants">For guests</a></li>
+          <li><a href="#partners">For restaurants</a></li>
+          <li><a href="#distributors">For distributors</a></li>
+          <li><a href="#">How it works</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">For partners</a></li>
+          <li><a href="#apply">Get started</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Language</h4>
+        <ul>
+          <li><a href="#">English</a></li>
+          <li style="color:#5C5C60;">Español — soon</li>
+          <li style="color:#5C5C60;">Français — soon</li>
+          <li style="color:#5C5C60;">中文 — soon</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 [Company legal name placeholder]. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#privacy" id="privacy">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#" id="cookieSettingsLink">Cookie policy</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  <p>We use cookies to operate Hostera and, with your permission, for analytics. See our <a href="#">Cookie policy</a> and <a href="#">Privacy policy</a>. California residents may opt out of sale/sharing at any time.</p>
+  <div class="cookie-actions">
+    <button class="btn-cookie" id="cookieReject">Reject non-essential</button>
+    <button class="btn-cookie primary" id="cookieAccept">Accept all</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="signInModal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="signInTitle">
+    <button class="modal-close" id="closeSignIn" aria-label="Close sign in dialog">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h3 id="signInTitle">Sign in to Hostera</h3>
+    <p class="modal-sub">Choose your account type to continue.</p>
+    <div class="role-tabs" role="tablist">
+      <button class="role-tab active" role="tab" aria-selected="true">Guest</button>
+      <button class="role-tab" role="tab" aria-selected="false">Restaurant</button>
+      <button class="role-tab" role="tab" aria-selected="false">Distributor</button>
+    </div>
+    <form>
+      <div class="modal-field">
+        <label for="modalEmail">Email</label>
+        <input id="modalEmail" type="email" autocomplete="email" required>
+      </div>
+      <div class="modal-field">
+        <label for="modalPassword">Password</label>
+        <input id="modalPassword" type="password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn-dark btn-block btn-lg">Sign in</button>
+    </form>
+    <div class="modal-divider">or</div>
+    <button class="btn btn-ghost btn-block">Continue with Google</button>
+    <p class="modal-foot-link">Don't have an account? <a href="#apply">Get started</a></p>
+  </div>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>

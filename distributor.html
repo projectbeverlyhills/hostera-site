@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hostera — Distributor Cabinet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dist.css">
+</head>
+<body class="dist">
+
+<a href="#distMain" class="dist-skip-link">Skip to content</a>
+
+<div class="dist-shell">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="dist-sidebar">
+    <div class="dist-brand"><span class="mark" aria-hidden="true"></span>Hostera</div>
+
+    <div class="dist-account">
+      <div class="avatar">BW</div>
+      <div class="who">
+        <p class="name">Burgundy Wine Co.</p>
+        <p class="role">Distributor · Signals plan</p>
+      </div>
+    </div>
+
+    <nav class="dist-nav" aria-label="Distributor cabinet">
+      <button class="dist-navlink active" data-page="overview">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+        Overview
+      </button>
+
+      <p class="dist-nav-label">Modules</p>
+
+      <button class="dist-navlink" data-page="catalog">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V2H6.5A2.5 2.5 0 004 4.5v15z"/></svg>
+        Catalog
+        <span class="badge">12</span>
+      </button>
+      <button class="dist-navlink" data-page="connector">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.6 10.6L15.4 7.4M8.6 13.4l6.8 3.2"/></svg>
+        Connector
+        <span class="badge">6</span>
+      </button>
+      <button class="dist-navlink" data-page="orders">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 6l1.5 13.5A2 2 0 006.5 21h11a2 2 0 002-2.5L21 6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+        Orders
+        <span class="badge">3</span>
+      </button>
+      <button class="dist-navlink" data-page="signals">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg>
+        Demand Signals
+      </button>
+
+      <p class="dist-nav-label">Account</p>
+
+      <button class="dist-navlink" data-page="profile">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.6-3.6 4.6-5.5 7.5-5.5s5.9 1.9 7.5 5.5"/></svg>
+        Profile & Settings
+      </button>
+      <button class="dist-navlink" data-page="billing">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+        Billing & Subscription
+      </button>
+      <button class="dist-navlink" data-page="support">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.7-2.5 1.7-2.5 3.5M12 17h.01"/></svg>
+        Help & Support
+      </button>
+    </nav>
+
+    <div class="dist-sidebar-foot">
+      <div class="dist-toggle">
+        <span>Dark mode</span>
+        <div class="dist-toggle-switch" id="themeToggle" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle dark mode"><div class="knob"></div></div>
+      </div>
+      <a class="dist-navlink" href="index.html" style="text-decoration:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        Sign out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div class="dist-main">
+
+    <header class="dist-topbar">
+      <div class="dist-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        Search SKUs, orders, restaurants…
+      </div>
+      <div class="dist-topbar-right">
+        <span class="dist-env-pill">Pilot data</span>
+        <button class="dist-icon-btn" aria-label="Notifications">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+          <span class="dot"></span>
+        </button>
+        <div class="avatar" style="width:36px;height:36px;border-radius:9px;background:var(--dist-accent-soft);color:var(--dist-accent-ink);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;">BW</div>
+      </div>
+    </header>
+
+    <main class="dist-content" id="distMain">
+
+      <!-- ===================== OVERVIEW ===================== -->
+      <section class="dist-page active" id="page-overview">
+        <div class="dist-page-head">
+          <div>
+            <p class="dist-eyebrow">Welcome back</p>
+            <h1 class="dist-h1">Burgundy Wine Co. — Thursday, July 2</h1>
+            <p class="dist-h1-sub">Three orders are waiting for confirmation, and your Loire promoted slot ends next week.</p>
+          </div>
+          <div class="ds-flex ds-gap8">
+            <button class="dsbtn dsbtn-line">Export report</button>
+            <button class="dsbtn dsbtn-accent">+ Add SKU</button>
+          </div>
+        </div>
+
+        <div class="dsgrid dsgrid-4 ds-mt16">
+          <div class="dscard">
+            <p class="ds-kpi-label">GMV via Hostera, last 7 days</p>
+            <p class="ds-kpi-value mono">$46,780</p>
+            <span class="ds-kpi-delta up">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 19L19 5M19 5H9M19 5v10"/></svg>
+              9.2% <span class="vs">vs last week</span>
+            </span>
+          </div>
+          <div class="dscard">
+            <p class="ds-kpi-label">Active listings</p>
+            <p class="ds-kpi-value mono">1,240</p>
+            <span class="ds-kpi-delta up">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 19L19 5M19 5H9M19 5v10"/></svg>
+              1,190 linked <span class="vs">to Hostera cards</span>
+            </span>
+          </div>
+          <div class="dscard">
+            <p class="ds-kpi-label">Match win rate, 30 days</p>
+            <p class="ds-kpi-value mono">62%</p>
+            <span class="ds-kpi-delta up">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 19L19 5M19 5H9M19 5v10"/></svg>
+              +4 pts <span class="vs">vs May</span>
+            </span>
+          </div>
+          <div class="dscard">
+            <p class="ds-kpi-label">Open orders</p>
+            <p class="ds-kpi-value mono">14</p>
+            <span class="ds-kpi-delta up" style="color:var(--dist-ink-soft);">
+              $18,410 <span class="vs">in pipeline</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="dsgrid ds-mt16" style="grid-template-columns:1.6fr 1fr;">
+          <div class="dscard">
+            <div class="ds-panel-title">
+              <div><h3>GMV by day</h3><p class="sub">Orders through Hostera, last 7 days</p></div>
+              <span class="ds-pill neutral">Jun 26 – Jul 2</span>
+            </div>
+            <div class="ds-barchart" role="img" aria-label="Bar chart of daily GMV, peaking Tuesday at $9,400">
+              <div class="bar"><div class="fill" style="height:44%"></div><span class="lbl">Fri</span></div>
+              <div class="bar"><div class="fill" style="height:58%"></div><span class="lbl">Sat</span></div>
+              <div class="bar"><div class="fill" style="height:22%"></div><span class="lbl">Sun</span></div>
+              <div class="bar"><div class="fill" style="height:70%"></div><span class="lbl">Mon</span></div>
+              <div class="bar is-peak"><div class="fill" style="height:100%"></div><span class="lbl">Tue</span></div>
+              <div class="bar"><div class="fill" style="height:76%"></div><span class="lbl">Wed</span></div>
+              <div class="bar"><div class="fill" style="height:62%"></div><span class="lbl">Thu</span></div>
+            </div>
+            <div class="ds-flex ds-spread ds-mt16">
+              <p class="ds-t-sm ds-t-soft ds-mb0" style="margin:0;">Top categories this week</p>
+              <p class="ds-t-sm ds-t-faint" style="margin:0;">share of GMV</p>
+            </div>
+            <div class="ds-alert-row"><span class="ds-alert-dot good"></span><div class="ds-alert-text" style="flex:1;"><p>Wine</p></div><span class="mono ds-t-sm ds-t-soft">68%</span></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text" style="flex:1;"><p>Spirits</p></div><span class="mono ds-t-sm ds-t-soft">17%</span></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text" style="flex:1;"><p>Coffee & Tea</p></div><span class="mono ds-t-sm ds-t-soft">9%</span></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text" style="flex:1;"><p>Water & NA</p></div><span class="mono ds-t-sm ds-t-soft">6%</span></div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="dscard">
+              <div class="ds-panel-title"><div><h3>Needs attention</h3></div></div>
+              <div class="ds-alert-row">
+                <span class="ds-alert-dot bad"></span>
+                <div class="ds-alert-text"><p>3 orders awaiting your confirmation</p><p class="meta">Oldest: #HO-3086, placed Jun 30 by Novikov LA</p></div>
+                <span class="ds-alert-cta">Review</span>
+              </div>
+              <div class="ds-alert-row">
+                <span class="ds-alert-dot warn"></span>
+                <div class="ds-alert-text"><p>3 out-of-stock SKUs still appear in matches</p><p class="meta">Update stock to avoid lost matches</p></div>
+                <span class="ds-alert-cta">Open catalog</span>
+              </div>
+              <div class="ds-alert-row">
+                <span class="ds-alert-dot warn"></span>
+                <div class="ds-alert-text"><p>Loire promoted slot ends Jul 12</p><p class="meta">3 switches attributed this cycle</p></div>
+                <span class="ds-alert-cta">Renew</span>
+              </div>
+              <div class="ds-alert-row">
+                <span class="ds-alert-dot neutral"></span>
+                <div class="ds-alert-text"><p>12 product cards in Hostera curation</p><p class="meta">Typical turnaround: 2 business days</p></div>
+                <span class="ds-alert-cta">View</span>
+              </div>
+            </div>
+
+            <div class="dscard">
+              <div class="ds-panel-title">
+                <div><h3>Signals digest</h3><p class="sub">Week of Jun 26 · Signals plan</p></div>
+                <span class="ds-pill accent">Weekly</span>
+              </div>
+              <div class="ds-alert-row"><span class="ds-alert-dot good"></span><div class="ds-alert-text"><p>Your SKUs appeared in <strong>34 matches</strong></p><p class="meta">6 switches to your listings</p></div></div>
+              <div class="ds-alert-row"><span class="ds-alert-dot warn"></span><div class="ds-alert-text"><p><strong>12 unmatched searches</strong> in your categories</p><p class="meta">See Gap report for the exact requests</p></div></div>
+              <button class="dsbtn dsbtn-line ds-mt16" data-goto="signals">Open Demand Signals</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CATALOG ===================== -->
+      <section class="dist-page" id="page-catalog">
+        <div class="dist-page-head">
+          <div>
+            <p class="dist-eyebrow">Module · Hybrid catalog</p>
+            <h1 class="dist-h1">Catalog</h1>
+            <p class="dist-h1-sub">You own SKUs, prices and stock. Hostera curates the product cards restaurants see — linked SKUs get full weight in Connector matching.</p>
+          </div>
+          <div class="ds-flex ds-gap8">
+            <button class="dsbtn dsbtn-line">Import CSV</button>
+            <button class="dsbtn dsbtn-accent">Publish updates</button>
+          </div>
+        </div>
+
+        <div class="dsgrid dsgrid-4">
+          <div class="dscard"><p class="ds-kpi-label">Total SKUs</p><p class="ds-kpi-value mono">1,240</p></div>
+          <div class="dscard"><p class="ds-kpi-label">Linked to Hostera cards</p><p class="ds-kpi-value mono">1,190</p><div class="ds-progress good ds-mt8" role="img" aria-label="96 percent linked"><span style="width:96%"></span></div></div>
+          <div class="dscard"><p class="ds-kpi-label">In curation</p><p class="ds-kpi-value mono">12</p><span class="ds-kpi-delta" style="color:var(--dist-ink-soft);">Hostera is editing cards</span></div>
+          <div class="dscard"><p class="ds-kpi-label">Unlinked</p><p class="ds-kpi-value mono">38</p><span class="ds-kpi-delta" style="color:var(--dist-ink-soft);">Reduced match weight</span></div>
+        </div>
+
+        <div class="ds-module-tabs ds-mt16">
+          <span class="ds-module-tab active" data-tab-target="all">All SKUs</span>
+          <span class="ds-module-tab" data-tab-target="curation">In curation (12)</span>
+          <span class="ds-module-tab" data-tab-target="unlinked">Unlinked (38)</span>
+        </div>
+
+        <div data-tab-panel="all">
+          <div class="dscard">
+            <table class="dstable">
+              <thead><tr><th>SKU</th><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Card status</th></tr></thead>
+              <tbody>
+                <tr><td class="ds-cell-strong mono">BW-0141</td><td class="ds-cell-strong">Pascal Cotat "La Grande Côte", Sancerre 2020</td><td class="ds-cell-soft">Wine · Loire</td><td class="mono">$112 / btl</td><td class="mono">14 cs</td><td><span class="ds-pill good">Linked</span></td></tr>
+                <tr><td class="ds-cell-strong mono">BW-0187</td><td class="ds-cell-strong">Domaine Daniel Chotard, Sancerre 2021</td><td class="ds-cell-soft">Wine · Loire</td><td class="mono">$74 / btl</td><td class="mono">22 cs</td><td><span class="ds-pill good">Linked</span></td></tr>
+                <tr><td class="ds-cell-strong mono">BW-0322</td><td class="ds-cell-strong">Ceretto Barolo "Brunate" 2019</td><td class="ds-cell-soft">Wine · Piedmont</td><td class="mono">$148 / btl</td><td class="mono">6 cs</td><td><span class="ds-pill good">Linked</span></td></tr>
+                <tr><td class="ds-cell-strong mono">BW-0409</td><td class="ds-cell-strong">Sandhi Chardonnay, Sta. Rita Hills 2022</td><td class="ds-cell-soft">Wine · California</td><td class="mono">$58 / btl</td><td class="mono">30 cs</td><td><span class="ds-pill good">Linked</span></td></tr>
+                <tr><td class="ds-cell-strong mono">SP-0071</td><td class="ds-cell-strong">Kanro 12 Year, Japanese single malt</td><td class="ds-cell-soft">Spirits · Whisky</td><td class="mono">$210 / btl</td><td class="mono">4 cs</td><td><span class="ds-pill good">Linked</span></td></tr>
+                <tr><td class="ds-cell-strong mono">SP-0064</td><td class="ds-cell-strong">Cielo Roto Ensamble, mezcal artesanal</td><td class="ds-cell-soft">Spirits · Agave</td><td class="mono">$86 / btl</td><td class="mono">9 cs</td><td><span class="ds-pill warn">In curation</span></td></tr>
+                <tr><td class="ds-cell-strong mono">CF-0012</td><td class="ds-cell-strong">Canyon Bloom Gesha espresso, 5 lb</td><td class="ds-cell-soft">Coffee & Tea</td><td class="mono">$92 / bag</td><td class="mono">18</td><td><span class="ds-pill warn">In curation</span></td></tr>
+                <tr><td class="ds-cell-strong mono">WT-0007</td><td class="ds-cell-strong">Sierra Vell sparkling mineral, 12 × 750 ml</td><td class="ds-cell-soft">Water & NA</td><td class="mono">$34 / cs</td><td class="mono">120 cs</td><td><span class="ds-pill good">Linked</span></td></tr>
+                <tr><td class="ds-cell-strong mono">WT-0011</td><td class="ds-cell-strong">Fleur Zéro, non-alc sparkling rosé</td><td class="ds-cell-soft">Water & NA</td><td class="mono">$41 / cs</td><td class="mono ds-t-bad">0</td><td><span class="ds-pill neutral">Unlinked</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ds-t-sm ds-t-faint ds-mt8">Showing 9 of 1,240 SKUs · demo slice. <!-- TODO: backend — paginated SKU list, search, category filter --></p>
+        </div>
+
+        <div data-tab-panel="curation" style="display:none;">
+          <div class="dscard">
+            <div class="ds-panel-title"><div><h3>Cards being curated by Hostera</h3><p class="sub">Your SKU data stays yours; Hostera edits the card restaurants see — imagery, tasting notes, provenance fields.</p></div></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot warn"></span><div class="ds-alert-text"><p>Cielo Roto Ensamble, mezcal artesanal</p><p class="meta">Submitted Jun 30 · tasting notes in review</p></div><span class="ds-pill warn">In curation</span></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot warn"></span><div class="ds-alert-text"><p>Canyon Bloom Gesha espresso, 5 lb</p><p class="meta">Submitted Jul 1 · roaster profile requested</p></div><span class="ds-pill warn">In curation</span></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>10 more cards</p><p class="meta">Typical turnaround: 2 business days</p></div></div>
+          </div>
+        </div>
+
+        <div data-tab-panel="unlinked" style="display:none;">
+          <div class="dscard">
+            <div class="ds-panel-title"><div><h3>Unlinked SKUs</h3><p class="sub">Not yet mapped to a Hostera curated card. They still list, but carry reduced weight in Connector matching.</p></div><button class="dsbtn dsbtn-accent dsbtn-sm">Request linking</button></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>Fleur Zéro, non-alc sparkling rosé</p><p class="meta">No matching card in the Hostera base yet — a new card will be created on linking</p></div></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>37 more SKUs</p><p class="meta">Mostly private-label dry goods</p></div></div>
+            <!-- TODO: backend — SKU↔curated-card linking flow; this mapping is the primary entity for the future
+                 two-way base connect (Hostera curated card base ↔ distributor databases). -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CONNECTOR ===================== -->
+      <section class="dist-page" id="page-connector">
+        <div class="dist-page-head">
+          <div>
+            <p class="dist-eyebrow">Module · Demand side of the bridge</p>
+            <h1 class="dist-h1">Connector</h1>
+            <p class="dist-h1-sub">When a restaurant 86's an item, Hostera matches your linked SKUs against it. Leads land here; restaurants stay anonymous until they act on your listing.</p>
+          </div>
+          <button class="dsbtn dsbtn-line">Matching rules</button>
+        </div>
+
+        <div class="ds-module-tabs">
+          <span class="ds-module-tab active" data-tab-target="leads">Leads (6)</span>
+          <span class="ds-module-tab" data-tab-target="promoted">Promoted placements</span>
+        </div>
+
+        <div data-tab-panel="leads">
+          <div class="dsgrid dsgrid-3">
+            <div class="dscard"><p class="ds-kpi-label">Match appearances, 7 days</p><p class="ds-kpi-value mono">34</p></div>
+            <div class="dscard"><p class="ds-kpi-label">Switches to your SKUs</p><p class="ds-kpi-value mono">6</p><span class="ds-kpi-delta up"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 19L19 5M19 5H9M19 5v10"/></svg>+2 <span class="vs">vs last week</span></span></div>
+            <div class="dscard"><p class="ds-kpi-label">Availability requests pending</p><p class="ds-kpi-value mono">2</p></div>
+          </div>
+
+          <div class="ds-mt16">
+            <div class="ds-lead-row">
+              <div class="ds-score event">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Novikov LA switched to your Pascal Cotat "La Grande Côte" Sancerre 2020</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">Replacing a Domaine Vacheron stock-out · matched at 96% · likely standing volume ~2 cs / week</p>
+              </div>
+              <span class="ds-pill good">Won match</span>
+              <button class="dsbtn dsbtn-line dsbtn-sm">View SKU</button>
+            </div>
+
+            <div class="ds-lead-row">
+              <div class="ds-score">96%</div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Availability request · Kanro 12 Year, Japanese single malt</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">Tasting menu · DTLA · wants 2 cs before Jul 10 · stock on file: 4 cs</p>
+              </div>
+              <span class="ds-pill warn">Respond by Jul 4</span>
+              <button class="dsbtn dsbtn-accent dsbtn-sm" data-confirm-availability>Confirm availability</button>
+            </div>
+
+            <div class="ds-lead-row">
+              <div class="ds-score">92%</div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Availability request · Sierra Vell sparkling mineral, 12 × 750 ml</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">Fine dining · Newport Beach · recurring weekly volume, 10 cs</p>
+              </div>
+              <span class="ds-pill warn">Respond by Jul 5</span>
+              <button class="dsbtn dsbtn-accent dsbtn-sm" data-confirm-availability>Confirm availability</button>
+            </div>
+
+            <div class="ds-lead-row">
+              <div class="ds-score mid">78%</div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Your Domaine Daniel Chotard Sancerre appeared in a match</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">Fine dining · West Hollywood · shown at 78% · no action yet</p>
+              </div>
+              <span class="ds-pill neutral">Appeared</span>
+            </div>
+
+            <div class="ds-lead-row">
+              <div class="ds-score low">L</div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Lost match · Chablis 1er Cru category</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">Contemporary · Santa Monica · lost on price, your listing was $9 above the accepted match</p>
+              </div>
+              <span class="ds-pill bad">Lost on price</span>
+              <button class="dsbtn dsbtn-line dsbtn-sm" data-goto="signals">Win / Loss</button>
+            </div>
+
+            <div class="ds-lead-row">
+              <div class="ds-score low">L</div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Lost match · Espresso, single-origin</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">Bistro · Pasadena · Canyon Bloom was out of stock at match time</p>
+              </div>
+              <span class="ds-pill bad">Out of stock</span>
+              <button class="dsbtn dsbtn-line dsbtn-sm" data-goto="catalog">Update stock</button>
+            </div>
+          </div>
+        </div>
+
+        <div data-tab-panel="promoted" style="display:none;">
+          <div class="dsgrid dsgrid-2">
+            <div class="dscard">
+              <div class="ds-panel-title">
+                <div><h3>Active placements</h3><p class="sub">Featured slots by category · flat weekly rate, no auction</p></div>
+                <span class="ds-pill accent">2 of 2 plan slots in use</span>
+              </div>
+              <table class="dstable">
+                <thead><tr><th>Category slot</th><th>Territory</th><th>Ends</th><th>Attributed</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td class="ds-cell-strong">Wine · Loire</td><td class="ds-cell-soft">LA County</td><td class="ds-cell-soft">Jul 12</td><td class="mono">210 views · 3 switches</td><td><span class="ds-pill good">Active</span></td></tr>
+                  <tr><td class="ds-cell-strong">Spirits · Agave</td><td class="ds-cell-soft">LA Westside</td><td class="ds-cell-soft">Jul 19</td><td class="mono">86 views · 1 switch</td><td><span class="ds-pill good">Active</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="dscard">
+              <div class="ds-panel-title"><div><h3>Available slots</h3><p class="sub">One distributor per category per territory per week</p></div></div>
+              <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>Coffee & Tea · LA County</p><p class="meta">$90 / week</p></div><button class="dsbtn dsbtn-line dsbtn-sm" style="margin-left:auto;">Book slot</button></div>
+              <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>Water & NA · Orange County</p><p class="meta">$90 / week</p></div><button class="dsbtn dsbtn-line dsbtn-sm" style="margin-left:auto;">Book slot</button></div>
+              <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>Wine · California · San Diego</p><p class="meta">$90 / week · high demand territory</p></div><button class="dsbtn dsbtn-line dsbtn-sm" style="margin-left:auto;">Book slot</button></div>
+            </div>
+          </div>
+          <div class="dscard ds-mt16" style="box-shadow:none;background:var(--dist-bg-sunken);border-style:dashed;">
+            <p class="ds-t-sm ds-t-soft" style="margin:0;line-height:1.6;"><strong style="color:var(--dist-ink);">How Featured works.</strong> Promoted placements never alter match scores. Your listing is shown first among matches of the same score tier, with a quiet <span class="ds-pill accent" style="margin:0 2px;">Featured</span> pill on the restaurant side. Match integrity is what makes restaurants trust the switch button — and what makes your slot worth buying.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ORDERS ===================== -->
+      <section class="dist-page" id="page-orders">
+        <div class="dist-page-head">
+          <div>
+            <p class="dist-eyebrow">Module</p>
+            <h1 class="dist-h1">Orders</h1>
+            <p class="dist-h1-sub">Orders restaurants place through Hostera Procurement. Statuses you set here are what the restaurant sees. Delivery stays on your own trucks and schedule.</p>
+          </div>
+          <span class="ds-pill neutral">Platform fee 1.5% · waived during pilot</span>
+        </div>
+
+        <div class="ds-module-tabs">
+          <span class="ds-module-tab active" data-tab-target="pipeline">Pipeline (14)</span>
+          <span class="ds-module-tab" data-tab-target="history">History</span>
+        </div>
+
+        <div data-tab-panel="pipeline">
+          <div class="dscard">
+            <table class="dstable">
+              <thead><tr><th>Order</th><th>Restaurant</th><th>Items</th><th>Total</th><th>Requested for</th><th>Status</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="ds-cell-strong mono">#HO-3095</td><td>Meridian, DTLA</td><td class="ds-cell-soft">9 line items</td><td class="mono">$3,660</td><td class="ds-cell-soft">Jul 6</td>
+                  <td data-order-status><span class="ds-pill warn">New</span></td>
+                  <td><button class="dsbtn dsbtn-accent dsbtn-sm" data-confirm-order>Confirm</button></td>
+                </tr>
+                <tr>
+                  <td class="ds-cell-strong mono">#HO-3091</td><td>Novikov LA</td><td class="ds-cell-soft">12 line items</td><td class="mono">$4,820</td><td class="ds-cell-soft">Jul 2</td>
+                  <td data-order-status><span class="ds-pill warn">New</span></td>
+                  <td><button class="dsbtn dsbtn-accent dsbtn-sm" data-confirm-order>Confirm</button></td>
+                </tr>
+                <tr>
+                  <td class="ds-cell-strong mono">#HO-3086</td><td>Novikov LA</td><td class="ds-cell-soft">4 line items</td><td class="mono">$2,210</td><td class="ds-cell-soft">Jul 3</td>
+                  <td data-order-status><span class="ds-pill warn">New</span></td>
+                  <td><button class="dsbtn dsbtn-accent dsbtn-sm" data-confirm-order>Confirm</button></td>
+                </tr>
+                <tr>
+                  <td class="ds-cell-strong mono">#HO-3079</td><td>Casa Vela, Santa Monica</td><td class="ds-cell-soft">7 line items</td><td class="mono">$2,940</td><td class="ds-cell-soft">Jul 5</td>
+                  <td><span class="ds-pill good">Confirmed</span></td>
+                  <td><button class="dsbtn dsbtn-line dsbtn-sm">Mark in transit</button></td>
+                </tr>
+                <tr>
+                  <td class="ds-cell-strong mono">#HO-3072</td><td>Lumen & Oak, Pasadena</td><td class="ds-cell-soft">5 line items</td><td class="mono">$1,780</td><td class="ds-cell-soft">Jul 2</td>
+                  <td><span class="ds-pill good">In transit</span></td>
+                  <td><button class="dsbtn dsbtn-line dsbtn-sm">Mark fulfilled</button></td>
+                </tr>
+                <tr>
+                  <td class="ds-cell-strong mono">#HO-3068</td><td>The Anchor Room, Newport Beach</td><td class="ds-cell-soft">11 line items</td><td class="mono">$4,120</td><td class="ds-cell-soft">Jul 1</td>
+                  <td><span class="ds-pill good">In transit</span></td>
+                  <td><button class="dsbtn dsbtn-line dsbtn-sm">Mark fulfilled</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ds-t-sm ds-t-faint ds-mt8">Statuses sync to the restaurant's Procurement module. <!-- TODO: backend — order status webhooks to Segment 2 Procurement --></p>
+        </div>
+
+        <div data-tab-panel="history" style="display:none;">
+          <div class="dscard">
+            <table class="dstable">
+              <thead><tr><th>Order</th><th>Restaurant</th><th>Total</th><th>Fulfilled</th></tr></thead>
+              <tbody>
+                <tr><td class="ds-cell-strong mono">#HO-3064</td><td>Solana Cove, San Diego</td><td class="mono">$2,380</td><td class="ds-cell-soft">Jun 28</td></tr>
+                <tr><td class="ds-cell-strong mono">#HO-3057</td><td>Novikov LA</td><td class="mono">$5,240</td><td class="ds-cell-soft">Jun 26</td></tr>
+                <tr><td class="ds-cell-strong mono">#HO-3049</td><td>Meridian, DTLA</td><td class="mono">$1,960</td><td class="ds-cell-soft">Jun 24</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== DEMAND SIGNALS ===================== -->
+      <section class="dist-page" id="page-signals">
+        <div class="dist-page-head">
+          <div>
+            <p class="dist-eyebrow">Module · Demand intelligence</p>
+            <h1 class="dist-h1">Demand Signals</h1>
+            <p class="dist-h1-sub">What LA-area restaurants are searching, missing, and switching to — from live Connector activity. Aggregated and anonymized; restaurants are named only when they act on your listings.</p>
+          </div>
+          <span class="ds-pill accent">Signals plan · weekly refresh</span>
+        </div>
+
+        <div class="ds-module-tabs">
+          <span class="ds-module-tab active" data-tab-target="demand">Search demand</span>
+          <span class="ds-module-tab" data-tab-target="gaps">Gap report</span>
+          <span class="ds-module-tab" data-tab-target="winloss">Win / Loss</span>
+          <span class="ds-module-tab" data-tab-target="intel">Market Intelligence</span>
+        </div>
+
+        <div data-tab-panel="demand">
+          <div class="ds-flex ds-gap8" style="flex-wrap:wrap;margin-bottom:16px;">
+            <span class="ds-pill accent">LA Westside · 41</span>
+            <span class="ds-pill neutral">DTLA · 33</span>
+            <span class="ds-pill neutral">South Bay · 12</span>
+            <span class="ds-pill neutral">Orange County · 18</span>
+            <span class="ds-pill neutral">San Diego · 9</span>
+            <span class="ds-t-sm ds-t-faint" style="margin-left:4px;">restaurant searches this week, your categories</span>
+          </div>
+
+          <div class="dsgrid" style="grid-template-columns:1.5fr 1fr;">
+            <div class="dscard">
+              <div class="ds-panel-title"><div><h3>Search volume, your categories</h3><p class="sub">Weekly Connector searches · trailing 8 weeks · LA + OC + SD</p></div></div>
+              <div class="ds-barchart" role="img" aria-label="Bar chart of weekly search volume rising from 61 to 113 over eight weeks">
+                <div class="bar"><div class="fill" style="height:54%"></div><span class="lbl">May 8</span></div>
+                <div class="bar"><div class="fill" style="height:49%"></div><span class="lbl">May 15</span></div>
+                <div class="bar"><div class="fill" style="height:60%"></div><span class="lbl">May 22</span></div>
+                <div class="bar"><div class="fill" style="height:66%"></div><span class="lbl">May 29</span></div>
+                <div class="bar"><div class="fill" style="height:72%"></div><span class="lbl">Jun 5</span></div>
+                <div class="bar"><div class="fill" style="height:78%"></div><span class="lbl">Jun 12</span></div>
+                <div class="bar"><div class="fill" style="height:88%"></div><span class="lbl">Jun 19</span></div>
+                <div class="bar is-peak"><div class="fill" style="height:100%"></div><span class="lbl">Jun 26</span></div>
+              </div>
+            </div>
+            <div class="dscard">
+              <div class="ds-panel-title"><div><h3>Trending subcategories</h3><p class="sub">Search growth, 30 days</p></div></div>
+              <div class="ds-alert-row"><span class="ds-alert-dot good"></span><div class="ds-alert-text" style="flex:1;"><p>Wine · Loire whites</p></div><span class="mono ds-t-sm ds-t-good">+24%</span></div>
+              <div class="ds-alert-row"><span class="ds-alert-dot good"></span><div class="ds-alert-text" style="flex:1;"><p>Spirits · Agave, sipping tier</p></div><span class="mono ds-t-sm ds-t-good">+18%</span></div>
+              <div class="ds-alert-row"><span class="ds-alert-dot good"></span><div class="ds-alert-text" style="flex:1;"><p>Coffee · Single-origin espresso</p></div><span class="mono ds-t-sm ds-t-good">+11%</span></div>
+              <div class="ds-alert-row"><span class="ds-alert-dot good"></span><div class="ds-alert-text" style="flex:1;"><p>Water & NA · Sparkling NA</p></div><span class="mono ds-t-sm ds-t-good">+9%</span></div>
+              <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text" style="flex:1;"><p>Wine · Napa Cabernet</p></div><span class="mono ds-t-sm ds-t-soft">−3%</span></div>
+            </div>
+          </div>
+          <p class="ds-t-sm ds-t-faint ds-mt8">Platform categories span Produce, Seafood, Meat, Dairy & Cheese, Wine, Spirits, Coffee & Tea, Water & NA, and Dry Goods — you see the categories you serve.</p>
+        </div>
+
+        <div data-tab-panel="gaps" style="display:none;">
+          <div class="dscard">
+            <div class="ds-panel-title">
+              <div><h3>Unmatched searches in your categories</h3><p class="sub">Restaurants searched — no connected distributor could supply. Direct restock signals.</p></div>
+              <span class="ds-pill warn">12 this week</span>
+            </div>
+            <div class="ds-lead-row">
+              <div class="ds-score mid">7×</div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Skin-contact Ribolla Gialla</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">7 searches · 4 restaurants · LA Westside & DTLA · 0 matches platform-wide</p>
+              </div>
+              <button class="dsbtn dsbtn-accent dsbtn-sm" data-goto="catalog">Add matching SKU</button>
+            </div>
+            <div class="ds-lead-row">
+              <div class="ds-score mid">5×</div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Non-alc sparkling rosé, by-the-glass tier</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">5 searches · 3 restaurants · you hold a matching SKU at 0 stock (Fleur Zéro)</p>
+              </div>
+              <button class="dsbtn dsbtn-accent dsbtn-sm" data-goto="catalog">Restock & link</button>
+            </div>
+            <div class="ds-lead-row">
+              <div class="ds-score mid">4×</div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Mezcal ensamble, ceremonial tier</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">4 searches · Orange County · your Cielo Roto card is still in curation</p>
+              </div>
+              <button class="dsbtn dsbtn-line dsbtn-sm" data-goto="catalog">Check curation</button>
+            </div>
+            <div class="ds-lead-row">
+              <div class="ds-score mid">3×</div>
+              <div style="flex:1;min-width:0;">
+                <p style="margin:0;font-weight:600;font-size:13.5px;">Single-farm Gesha, competition lot</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:3px 0 0;">3 searches · Pasadena & DTLA · adjacent to your Canyon Bloom listing</p>
+              </div>
+              <button class="dsbtn dsbtn-line dsbtn-sm" data-goto="catalog">View SKU</button>
+            </div>
+          </div>
+        </div>
+
+        <div data-tab-panel="winloss" style="display:none;">
+          <div class="dsgrid dsgrid-3">
+            <div class="dscard"><p class="ds-kpi-label">Matches with your SKUs, 30 days</p><p class="ds-kpi-value mono">131</p></div>
+            <div class="dscard"><p class="ds-kpi-label">Won</p><p class="ds-kpi-value mono ds-t-good">81</p><span class="ds-kpi-delta" style="color:var(--dist-ink-soft);">62% win rate</span></div>
+            <div class="dscard"><p class="ds-kpi-label">Lost</p><p class="ds-kpi-value mono ds-t-bad">50</p><span class="ds-kpi-delta" style="color:var(--dist-ink-soft);">31 on price · 14 on stock · 5 on match</span></div>
+          </div>
+          <div class="dscard ds-mt16">
+            <table class="dstable">
+              <thead><tr><th>Match event</th><th>Category</th><th>Outcome</th><th>Reason</th></tr></thead>
+              <tbody>
+                <tr><td class="ds-cell-strong">Sancerre replacement · Novikov LA</td><td class="ds-cell-soft">Wine · Loire</td><td><span class="ds-pill good">Won</span></td><td class="ds-cell-soft">Highest match score, 96%</td></tr>
+                <tr><td class="ds-cell-strong">Chablis 1er Cru · Santa Monica</td><td class="ds-cell-soft">Wine · Burgundy</td><td><span class="ds-pill bad">Lost</span></td><td class="ds-cell-soft">Price · $9 above accepted listing</td></tr>
+                <tr><td class="ds-cell-strong">Single-origin espresso · Pasadena</td><td class="ds-cell-soft">Coffee & Tea</td><td><span class="ds-pill bad">Lost</span></td><td class="ds-cell-soft">Out of stock at match time</td></tr>
+                <tr><td class="ds-cell-strong">Sparkling mineral · Newport Beach</td><td class="ds-cell-soft">Water & NA</td><td><span class="ds-pill good">Won</span></td><td class="ds-cell-soft">Featured slot + equal score tier</td></tr>
+                <tr><td class="ds-cell-strong">Barolo by-the-glass · DTLA</td><td class="ds-cell-soft">Wine · Piedmont</td><td><span class="ds-pill bad">Lost</span></td><td class="ds-cell-soft">Lower match score, 71% vs 88%</td></tr>
+              </tbody>
+            </table>
+            <p class="ds-t-sm ds-t-faint ds-mt8">Restaurants are named only where they switched to your SKU or placed an order with you.</p>
+          </div>
+        </div>
+
+        <div data-tab-panel="intel" style="display:none;">
+          <div class="ds-lock-card">
+            <div class="lock-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+            </div>
+            <h3 style="margin:0 0 8px;font-size:16px;font-weight:600;color:var(--dist-ink);">Market Intelligence</h3>
+            <p class="ds-t-sm ds-t-soft" style="margin:0 0 16px;max-width:620px;line-height:1.6;">Daily SKU-level demand, price benchmarking against the anonymized LA market (see where each listing sits by percentile), waste-derived insights — like recurring 20% trim loss in a category signaling demand for smaller pack formats — quarterly demand forecast, and CSV / API export.</p>
+            <div class="ds-flex ds-gap8">
+              <button class="dsbtn dsbtn-accent" data-goto="billing">Upgrade to Market Intelligence</button>
+              <span class="ds-t-sm ds-t-faint">$1,190 / month · cancel anytime</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PROFILE ===================== -->
+      <section class="dist-page" id="page-profile">
+        <div class="dist-page-head">
+          <div>
+            <p class="dist-eyebrow">Account</p>
+            <h1 class="dist-h1">Profile & Settings</h1>
+            <p class="dist-h1-sub">How your company appears to restaurants in Connector, and who on your team has access.</p>
+          </div>
+          <button class="dsbtn dsbtn-accent">Save changes</button>
+        </div>
+
+        <div class="dsgrid dsgrid-2 ds-mt16">
+          <div class="dscard">
+            <div class="ds-panel-title"><div><h3>Company profile</h3></div></div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div><p class="ds-t-sm ds-t-soft ds-mb0" style="margin:0;">Display name</p><p style="margin:4px 0 0;font-weight:600;">Burgundy Wine Co.</p></div>
+              <div><p class="ds-t-sm ds-t-soft" style="margin:0;">Positioning</p><p style="margin:4px 0 0;">Fine wine, spirits & specialty beverages · est. 2011</p></div>
+              <div><p class="ds-t-sm ds-t-soft" style="margin:0;">Warehouse</p><p style="margin:4px 0 0;">Arts District, Downtown Los Angeles, CA</p></div>
+              <div><p class="ds-t-sm ds-t-soft" style="margin:0;">License</p><p style="margin:4px 0 0;" class="mono">CA ABC Type 17/20 · [license number placeholder]</p></div>
+              <div><p class="ds-t-sm ds-t-soft" style="margin:0;">Minimum order</p><p style="margin:4px 0 0;" class="mono">$750</p></div>
+              <div><p class="ds-t-sm ds-t-soft" style="margin:0;">Delivery</p><p style="margin:4px 0 0;">Own fleet · Tue / Thu / Fri <span class="ds-t-faint">(managed outside Hostera)</span></p></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="dscard">
+              <div class="ds-panel-title"><div><h3>Service territories</h3><p class="sub">Where your listings match in Connector</p></div><button class="dsbtn dsbtn-line dsbtn-sm">Edit</button></div>
+              <div class="ds-flex ds-gap8" style="flex-wrap:wrap;">
+                <span class="ds-pill accent">LA Westside</span>
+                <span class="ds-pill accent">DTLA</span>
+                <span class="ds-pill accent">South Bay</span>
+                <span class="ds-pill accent">San Gabriel Valley</span>
+                <span class="ds-pill accent">Orange County</span>
+                <span class="ds-pill accent">San Diego</span>
+              </div>
+              <div class="ds-panel-title ds-mt16" style="margin-bottom:10px;"><div><h3 style="font-size:13.5px;">Categories served</h3></div></div>
+              <div class="ds-flex ds-gap8" style="flex-wrap:wrap;">
+                <span class="ds-pill neutral">Wine</span>
+                <span class="ds-pill neutral">Spirits</span>
+                <span class="ds-pill neutral">Coffee & Tea</span>
+                <span class="ds-pill neutral">Water & NA</span>
+              </div>
+            </div>
+            <div class="dscard">
+              <div class="ds-panel-title"><div><h3>Team access</h3></div><button class="dsbtn dsbtn-line dsbtn-sm">+ Invite</button></div>
+              <table class="dstable">
+                <thead><tr><th>Name</th><th>Role</th><th>Access</th></tr></thead>
+                <tbody>
+                  <tr><td class="ds-cell-strong">You</td><td class="ds-cell-soft">Owner</td><td><span class="ds-pill accent">Full access</span></td></tr>
+                  <tr><td class="ds-cell-strong">Priya S.</td><td class="ds-cell-soft">Sales Director</td><td><span class="ds-pill neutral">Connector, Orders, Signals</span></td></tr>
+                  <tr><td class="ds-cell-strong">Tom K.</td><td class="ds-cell-soft">Catalog Manager</td><td><span class="ds-pill neutral">Catalog</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== BILLING ===================== -->
+      <section class="dist-page" id="page-billing">
+        <div class="dist-page-head">
+          <div>
+            <p class="dist-eyebrow">Account</p>
+            <h1 class="dist-h1">Billing & Subscription</h1>
+            <p class="dist-h1-sub">Your plan, promoted-placement charges, and invoice history.</p>
+          </div>
+        </div>
+
+        <div class="dsgrid dsgrid-3 ds-mt16">
+          <div class="dscard ds-plan">
+            <p class="plan-name">Foundation</p>
+            <p class="plan-for">Farms, craft producers, market entry</p>
+            <p class="plan-price mono">$0<span class="per"> / mo</span></p>
+            <ul>
+              <li>Catalog up to 250 SKUs</li>
+              <li>Leads & order pipeline, full access</li>
+              <li>Monthly Signals digest</li>
+              <li>Promoted slots at $90 / week</li>
+              <li>1.5% platform fee on orders</li>
+            </ul>
+            <button class="dsbtn dsbtn-line">Downgrade</button>
+          </div>
+          <div class="dscard ds-plan is-current">
+            <div class="ds-flex ds-spread"><p class="plan-name">Signals</p><span class="ds-pill accent">Current plan</span></div>
+            <p class="plan-for">Specialty distributors</p>
+            <p class="plan-price mono">$349<span class="per"> / mo</span></p>
+            <ul>
+              <li>Unlimited SKUs</li>
+              <li>Demand Radar: search trends, Gap report, Win / Loss — weekly</li>
+              <li>2 promoted slots included, extra at $90 / week</li>
+              <li>Priority placement within equal match tiers</li>
+              <li>1.5% platform fee on orders</li>
+            </ul>
+            <button class="dsbtn dsbtn-ghost" disabled>Your plan</button>
+          </div>
+          <div class="dscard ds-plan">
+            <p class="plan-name">Market Intelligence</p>
+            <p class="plan-for">Broadline & large importers</p>
+            <p class="plan-price mono">$1,190<span class="per"> / mo</span></p>
+            <ul>
+              <li>Everything in Signals, refreshed daily</li>
+              <li>SKU-level demand & price benchmarking</li>
+              <li>Waste-derived insights & quarterly forecast</li>
+              <li>CSV / API export, catalog API sync</li>
+              <li>Unlimited promo categories · 1.0% platform fee</li>
+            </ul>
+            <button class="dsbtn dsbtn-accent">Upgrade</button>
+          </div>
+        </div>
+
+        <div class="dsgrid dsgrid-2 ds-mt16">
+          <div class="dscard">
+            <div class="ds-panel-title"><div><h3>Recent invoices</h3></div></div>
+            <table class="dstable">
+              <thead><tr><th>Period</th><th>Detail</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Jun 2026</td><td class="ds-cell-soft">Signals + 2 extra promo weeks</td><td class="mono">$529.00</td><td><span class="ds-pill good">Paid</span></td></tr>
+                <tr><td>May 2026</td><td class="ds-cell-soft">Signals + 1 extra promo week</td><td class="mono">$439.00</td><td><span class="ds-pill good">Paid</span></td></tr>
+                <tr><td>Apr 2026</td><td class="ds-cell-soft">Signals</td><td class="mono">$349.00</td><td><span class="ds-pill good">Paid</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="dscard">
+            <div class="ds-panel-title"><div><h3>Platform fee</h3><p class="sub">Commission on orders placed through Hostera</p></div><span class="ds-pill good">Waived during pilot</span></div>
+            <p class="ds-kpi-value mono" style="font-size:22px;">$0.00<span class="ds-t-sm ds-t-soft" style="font-weight:400;"> accrued in June</span></p>
+            <p class="ds-t-sm ds-t-soft ds-mt8">Standard rate 1.5% (1.0% on Market Intelligence) applies after pilot review. Delivery, payment terms and credit stay directly between you and the restaurant.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SUPPORT ===================== -->
+      <section class="dist-page" id="page-support">
+        <div class="dist-page-head">
+          <div>
+            <p class="dist-eyebrow">Account</p>
+            <h1 class="dist-h1">Help & Support</h1>
+            <p class="dist-h1-sub">Reach your Hostera pilot contact, or browse setup guides.</p>
+          </div>
+        </div>
+
+        <div class="dsgrid dsgrid-2 ds-mt16">
+          <div class="dscard">
+            <div class="ds-panel-title"><div><h3>Your pilot contact</h3></div></div>
+            <div class="ds-flex ds-gap12">
+              <div class="avatar" style="width:42px;height:42px;border-radius:10px;background:var(--dist-accent-soft);color:var(--dist-accent-ink);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;">JD</div>
+              <div>
+                <p style="margin:0;font-weight:600;font-size:14px;">Jordan Diaz</p>
+                <p class="ds-t-sm ds-t-soft" style="margin:2px 0 0;">Partner success, Hostera</p>
+              </div>
+            </div>
+            <button class="dsbtn dsbtn-accent ds-mt16">Message Jordan</button>
+          </div>
+          <div class="dscard">
+            <div class="ds-panel-title"><div><h3>Guides</h3></div></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>Linking SKUs to Hostera curated cards</p></div></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>Reading your Gap report</p></div></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>Setting up promoted placements</p></div></div>
+            <div class="ds-alert-row"><span class="ds-alert-dot neutral"></span><div class="ds-alert-text"><p>Confirming orders & status flow</p></div></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="dist.js"></script>
+</body>
+</html>

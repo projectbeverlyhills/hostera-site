@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hostera — Restaurant Backoffice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dash.css">
+</head>
+<body class="dash">
+
+<a href="#dashMain" class="dash-skip-link">Skip to content</a>
+
+<div class="dash-shell">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="dash-sidebar">
+    <div class="dash-brand"><span class="mark" aria-hidden="true"></span>Hostera</div>
+
+    <div class="dash-account">
+      <div class="avatar">NV</div>
+      <div class="who">
+        <p class="name">Novikov LA</p>
+        <p class="role">Restaurant · Active</p>
+      </div>
+    </div>
+
+    <nav class="dash-nav" aria-label="Backoffice">
+      <button class="dash-navlink active" data-page="overview">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+        Overview
+      </button>
+
+      <p class="dash-nav-label">Modules</p>
+
+      <button class="dash-navlink" data-page="menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 3c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 2-2M19 12v9"/></svg>
+        Menu
+      </button>
+      <button class="dash-navlink" data-page="waste">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M9 7V4h6v3M6 7l1 13a2 2 0 002 2h6a2 2 0 002-2l1-13"/></svg>
+        Waste & Inventory
+      </button>
+      <button class="dash-navlink" data-page="connector">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.6 10.6L15.4 7.4M8.6 13.4l6.8 3.2"/></svg>
+        Connector
+        <span class="badge">4</span>
+      </button>
+      <button class="dash-navlink" data-page="procurement">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 6l1.5 13.5A2 2 0 006.5 21h11a2 2 0 002-2.5L21 6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+        Procurement
+      </button>
+      <button class="dash-navlink" data-page="analytics">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V9M10 21V3M17 21v-6"/></svg>
+        Analytics
+      </button>
+
+      <p class="dash-nav-label">Account</p>
+
+      <button class="dash-navlink" data-page="profile">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.6-3.6 4.6-5.5 7.5-5.5s5.9 1.9 7.5 5.5"/></svg>
+        Profile & Settings
+      </button>
+      <button class="dash-navlink" data-page="billing">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+        Billing & Subscription
+      </button>
+      <button class="dash-navlink" data-page="support">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.7-2.5 1.7-2.5 3.5M12 17h.01"/></svg>
+        Help & Support
+      </button>
+    </nav>
+
+    <div class="dash-sidebar-foot">
+      <div class="theme-toggle">
+        <span>Dark mode</span>
+        <div class="theme-toggle-switch" id="themeToggle" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle dark mode"><div class="knob"></div></div>
+      </div>
+      <button class="dash-navlink">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        Sign out
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div class="dash-main">
+
+    <header class="dash-topbar">
+      <div class="dash-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        Search menu items, orders, distributors…
+      </div>
+      <div class="dash-topbar-right">
+        <span class="env-pill">Pilot data</span>
+        <button class="dash-icon-btn" aria-label="Notifications">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+          <span class="dot"></span>
+        </button>
+        <div class="avatar" style="width:36px;height:36px;border-radius:9px;">NV</div>
+      </div>
+    </header>
+
+    <main class="dash-content" id="dashMain">
+
+      <!-- ===================== OVERVIEW ===================== -->
+      <section class="dash-page active" id="page-overview">
+        <div class="dash-page-head">
+          <div>
+            <p class="dash-eyebrow">Welcome back</p>
+            <h1 class="dash-h1">Novikov LA — Tuesday, June 30</h1>
+            <p class="dash-h1-sub">Service starts at 5:30 PM. Here's where things stand right now.</p>
+          </div>
+          <div class="d-flex d-gap8">
+            <button class="dbtn dbtn-line">Export report</button>
+            <button class="dbtn dbtn-accent">+ Quick action</button>
+          </div>
+        </div>
+
+        <div class="dgrid dgrid-4 d-mt16">
+          <div class="dcard">
+            <p class="kpi-label">Revenue, last 7 days</p>
+            <p class="kpi-value mono">$184,920</p>
+            <span class="kpi-delta up">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 19L19 5M19 5H9M19 5v10"/></svg>
+              12.4% <span class="vs">vs last week</span>
+            </span>
+          </div>
+          <div class="dcard">
+            <p class="kpi-label">Avg. check</p>
+            <p class="kpi-value mono">$214</p>
+            <span class="kpi-delta up">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 19L19 5M19 5H9M19 5v10"/></svg>
+              3.1% <span class="vs">vs last week</span>
+            </span>
+          </div>
+          <div class="dcard">
+            <p class="kpi-label">Food cost %</p>
+            <p class="kpi-value mono">29.8%</p>
+            <span class="kpi-delta down">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 5L5 19M5 19h10M5 19V9"/></svg>
+              1.2pt <span class="vs">vs target 31%</span>
+            </span>
+          </div>
+          <div class="dcard">
+            <p class="kpi-label">Open distributor orders</p>
+            <p class="kpi-value mono">6</p>
+            <span class="kpi-delta" style="color:var(--d-ink-faint);">
+              2 awaiting confirmation <span class="vs"></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="dgrid d-mt16" style="grid-template-columns:1.5fr 1fr;">
+
+          <div class="dcard">
+            <div class="panel-title">
+              <div>
+                <h3>Revenue by day</h3>
+                <p class="sub">Last 7 days, dine-in + bar</p>
+              </div>
+              <a class="panel-link" href="#" onclick="return false;">Open Analytics</a>
+            </div>
+            <div class="barchart">
+              <div class="bar"><div class="fill" style="height:58%"></div><span class="lbl">Wed</span></div>
+              <div class="bar"><div class="fill" style="height:64%"></div><span class="lbl">Thu</span></div>
+              <div class="bar is-peak"><div class="fill" style="height:92%"></div><span class="lbl">Fri</span></div>
+              <div class="bar is-peak"><div class="fill" style="height:100%"></div><span class="lbl">Sat</span></div>
+              <div class="bar"><div class="fill" style="height:71%"></div><span class="lbl">Sun</span></div>
+              <div class="bar"><div class="fill" style="height:34%"></div><span class="lbl">Mon</span></div>
+              <div class="bar"><div class="fill" style="height:49%"></div><span class="lbl">Tue</span></div>
+            </div>
+          </div>
+
+          <div class="dcard">
+            <div class="panel-title">
+              <div>
+                <h3>Needs attention</h3>
+                <p class="sub">4 items</p>
+              </div>
+            </div>
+            <div class="alert-row">
+              <span class="alert-dot bad"></span>
+              <div class="alert-text">
+                <p>Sancerre Domaine Vacheron is out of stock — live on menu</p>
+                <p class="meta">Wine list · 86'd 2 hours ago</p>
+              </div>
+            </div>
+            <div class="alert-row">
+              <span class="alert-dot warn"></span>
+              <div class="alert-text">
+                <p>King salmon inventory below par level</p>
+                <p class="meta">Waste & Inventory · 4 portions left</p>
+              </div>
+            </div>
+            <div class="alert-row">
+              <span class="alert-dot accent"></span>
+              <div class="alert-text">
+                <p>4 new distributor matches ready to review</p>
+                <p class="meta">Connector · Burgundy region, similar profile</p>
+              </div>
+              <span class="alert-cta">Review</span>
+            </div>
+            <div class="alert-row">
+              <span class="alert-dot neutral"></span>
+              <div class="alert-text">
+                <p>Pastry section pending your approval</p>
+                <p class="meta">Menu · edited by Marco, 1 day ago</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="dgrid d-mt16" style="grid-template-columns:1fr 1fr 1fr;">
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Waste this week</h3><p class="sub">% of food cost</p></div></div>
+            <p class="kpi-value mono" style="font-size:22px;">4.1%</p>
+            <div class="progress good d-mt8"><span style="width:41%"></span></div>
+            <p class="d-t-sm d-t-soft d-mt8">Target: under 5%. Trending well.</p>
+          </div>
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Procurement savings</h3><p class="sub">Via Connector matches, MTD</p></div></div>
+            <p class="kpi-value mono" style="font-size:22px;">$3,240</p>
+            <p class="d-t-sm d-t-soft d-mt8">11 line items switched to better-matched suppliers.</p>
+          </div>
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Menu engagement</h3><p class="sub">Guest digital menu views</p></div></div>
+            <p class="kpi-value mono" style="font-size:22px;">2,840</p>
+            <p class="d-t-sm d-t-soft d-mt8">Wine list is the most viewed section.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Module pages get inserted below by subsequent edits -->
+      <section class="dash-page" id="page-menu">
+        <div class="dash-page-head">
+          <div>
+            <p class="dash-eyebrow">Module</p>
+            <h1 class="dash-h1">Menu</h1>
+            <p class="dash-h1-sub">Build and edit your interactive digital menu, or preview exactly what guests see at the table.</p>
+          </div>
+          <button class="dbtn dbtn-accent">+ Add section</button>
+        </div>
+
+        <div class="module-tabs">
+          <span class="module-tab active" data-tab-target="edit">Edit mode</span>
+          <span class="module-tab" data-tab-target="preview">Guest preview</span>
+        </div>
+
+        <div data-tab-panel="edit">
+          <div class="dgrid" style="grid-template-columns:260px 1fr;align-items:start;">
+            <div class="dcard">
+              <p class="panel-link" style="margin-bottom:14px;display:block;">Sections</p>
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <button class="dash-navlink active" style="color:var(--d-ink);">Wine list<span class="badge" style="background:var(--d-accent-soft);color:var(--d-accent-ink);">42</span></button>
+                <button class="dash-navlink" style="color:var(--d-ink);">Bar & cocktails<span class="badge" style="background:var(--d-bg-sunken);color:var(--d-ink-soft);">18</span></button>
+                <button class="dash-navlink" style="color:var(--d-ink);">Pastry & dessert<span class="badge" style="background:var(--d-bg-sunken);color:var(--d-ink-soft);">11</span></button>
+                <button class="dash-navlink" style="color:var(--d-ink-faint);">+ Kitchen — not started</button>
+              </div>
+            </div>
+
+            <div class="dcard">
+              <div class="panel-title">
+                <div><h3>Wine list</h3><p class="sub">42 labels · last edited 1 day ago by Marco</p></div>
+                <button class="dbtn dbtn-line dbtn-sm">Preview section</button>
+              </div>
+              <table class="dtable">
+                <thead><tr><th>Label</th><th>Region</th><th>Vintage</th><th>Price</th><th>Status</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td class="cell-strong">Domaine Vacheron, Sancerre</td><td class="cell-soft">Loire, France</td><td class="cell-soft">2021</td><td class="mono">$98</td><td><span class="d-pill bad">86'd</span></td><td class="d-t-soft">Edit</td></tr>
+                  <tr><td class="cell-strong">Domaine Leflaive, Puligny-Montrachet</td><td class="cell-soft">Burgundy, France</td><td class="cell-soft">2019</td><td class="mono">$310</td><td><span class="d-pill good">Available</span></td><td class="d-t-soft">Edit</td></tr>
+                  <tr><td class="cell-strong">Ridge Monte Bello</td><td class="cell-soft">Santa Cruz, USA</td><td class="cell-soft">2018</td><td class="mono">$245</td><td><span class="d-pill good">Available</span></td><td class="d-t-soft">Edit</td></tr>
+                  <tr><td class="cell-strong">Egly-Ouriet Grand Cru</td><td class="cell-soft">Champagne, France</td><td class="cell-soft">NV</td><td class="mono">$180</td><td><span class="d-pill warn">Low stock</span></td><td class="d-t-soft">Edit</td></tr>
+                  <tr><td class="cell-strong">Produttori del Barbaresco</td><td class="cell-soft">Piedmont, Italy</td><td class="cell-soft">2020</td><td class="mono">$120</td><td><span class="d-pill good">Available</span></td><td class="d-t-soft">Edit</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div data-tab-panel="preview" style="display:none;">
+          <div class="dcard" style="max-width:420px;padding:0;overflow:hidden;">
+            <div style="background:var(--d-bg-sunken);padding:22px 22px 18px;border-bottom:1px solid var(--d-border);">
+              <p class="d-t-sm d-t-faint mono" style="margin:0 0 4px;">WINE LIST</p>
+              <p style="margin:0;font-size:18px;font-weight:600;">Sancerre, Loire</p>
+            </div>
+            <div style="padding:18px 22px;">
+              <div class="d-flex d-spread" style="padding:14px 0;border-bottom:1px solid var(--d-border-soft);">
+                <div><p style="margin:0;font-weight:600;font-size:14px;">Domaine Vacheron</p><p class="d-t-sm d-t-soft" style="margin:2px 0 0;">2021 · Sauvignon Blanc</p></div>
+                <p class="mono" style="margin:0;color:var(--d-ink-faint);text-decoration:line-through;">$98</p>
+              </div>
+              <div class="d-flex d-spread" style="padding:14px 0;">
+                <div><p style="margin:0;font-weight:600;font-size:14px;">Pascal Cotat "La Grande Côte"</p><p class="d-t-sm d-t-soft" style="margin:2px 0 0;">2020 · Sauvignon Blanc</p></div>
+                <p class="mono" style="margin:0;">$112</p>
+              </div>
+              <p class="d-t-sm d-t-faint d-mt16">Guest view — read only, updates live as you edit.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="dash-page" id="page-waste">
+        <div class="dash-page-head">
+          <div>
+            <p class="dash-eyebrow">Module</p>
+            <h1 class="dash-h1">Waste & Inventory</h1>
+            <p class="dash-h1-sub">Track stock levels, log write-offs, and see what waste is costing you.</p>
+          </div>
+          <button class="dbtn dbtn-accent">+ Log waste entry</button>
+        </div>
+
+        <div class="dgrid dgrid-3">
+          <div class="dcard">
+            <p class="kpi-label">Waste, last 7 days</p>
+            <p class="kpi-value mono">$2,180</p>
+            <span class="kpi-delta down"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 5L5 19M5 19h10M5 19V9"/></svg>0.8pt <span class="vs">vs last week</span></span>
+          </div>
+          <div class="dcard">
+            <p class="kpi-label">Items below par level</p>
+            <p class="kpi-value mono">3</p>
+            <span class="kpi-delta" style="color:var(--d-warn);">Needs reorder</span>
+          </div>
+          <div class="dcard">
+            <p class="kpi-label">Inventory counted</p>
+            <p class="kpi-value mono">Yesterday</p>
+            <span class="kpi-delta" style="color:var(--d-ink-faint);">Next count due in 6 days</span>
+          </div>
+        </div>
+
+        <div class="dcard d-mt16">
+          <div class="panel-title">
+            <div><h3>Stock levels</h3><p class="sub">Key items, walk-in & cellar</p></div>
+            <button class="dbtn dbtn-line dbtn-sm">Full inventory</button>
+          </div>
+          <table class="dtable">
+            <thead><tr><th>Item</th><th>On hand</th><th>Par level</th><th>Status</th><th>Last counted</th></tr></thead>
+            <tbody>
+              <tr><td class="cell-strong">King salmon</td><td class="mono">4 portions</td><td class="mono cell-soft">12</td><td><span class="d-pill bad">Below par</span></td><td class="cell-soft">Yesterday</td></tr>
+              <tr><td class="cell-strong">A5 Wagyu striploin</td><td class="mono">2.4 kg</td><td class="mono cell-soft">5 kg</td><td><span class="d-pill warn">Low</span></td><td class="cell-soft">Yesterday</td></tr>
+              <tr><td class="cell-strong">Egly-Ouriet Grand Cru</td><td class="mono">6 bottles</td><td class="mono cell-soft">12</td><td><span class="d-pill warn">Low</span></td><td class="cell-soft">2 days ago</td></tr>
+              <tr><td class="cell-strong">Heirloom tomatoes</td><td class="mono">14 kg</td><td class="mono cell-soft">10 kg</td><td><span class="d-pill good">OK</span></td><td class="cell-soft">Yesterday</td></tr>
+              <tr><td class="cell-strong">Black truffle</td><td class="mono">320 g</td><td class="mono cell-soft">250 g</td><td><span class="d-pill good">OK</span></td><td class="cell-soft">Yesterday</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="dgrid d-mt16" style="grid-template-columns:1fr 1fr;">
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Waste by cause</h3><p class="sub">Last 30 days</p></div></div>
+            <div style="display:flex;flex-direction:column;gap:13px;">
+              <div><div class="d-flex d-spread d-t-sm d-mb0"><span>Spoilage</span><span class="d-t-soft mono">$3,920</span></div><div class="progress d-mt8"><span style="width:46%"></span></div></div>
+              <div><div class="d-flex d-spread d-t-sm d-mb0"><span>Over-production</span><span class="d-t-soft mono">$2,610</span></div><div class="progress d-mt8"><span style="width:31%"></span></div></div>
+              <div><div class="d-flex d-spread d-t-sm d-mb0"><span>Send-backs</span><span class="d-t-soft mono">$1,140</span></div><div class="progress d-mt8"><span style="width:14%"></span></div></div>
+              <div><div class="d-flex d-spread d-t-sm d-mb0"><span>Prep error</span><span class="d-t-soft mono">$760</span></div><div class="progress d-mt8"><span style="width:9%"></span></div></div>
+            </div>
+          </div>
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Recent write-offs</h3></div></div>
+            <div class="alert-row"><span class="alert-dot bad"></span><div class="alert-text"><p>3 portions king salmon — spoilage</p><p class="meta">Logged by Marco · today, 2:14 PM</p></div></div>
+            <div class="alert-row"><span class="alert-dot bad"></span><div class="alert-text"><p>1 bottle Sancerre Vacheron — corked</p><p class="meta">Logged by Elena · yesterday</p></div></div>
+            <div class="alert-row"><span class="alert-dot warn"></span><div class="alert-text"><p>6 dessert portions — over-production</p><p class="meta">Logged by Marco · yesterday</p></div></div>
+          </div>
+        </div>
+      </section>
+      <section class="dash-page" id="page-connector">
+        <div class="dash-page-head">
+          <div>
+            <p class="dash-eyebrow">Module · Procurement Intelligence</p>
+            <h1 class="dash-h1">Connector</h1>
+            <p class="dash-h1-sub">Hostera scans your connected distributors' catalogs and finds matches for menu items based on style, region, and price tier.</p>
+          </div>
+          <button class="dbtn dbtn-line">Connected distributors (5)</button>
+        </div>
+
+        <div class="dcard d-mt16">
+          <div class="panel-title">
+            <div><h3>Sancerre, Domaine Vacheron is out of stock</h3><p class="sub">Live on your menu · 86'd 2 hours ago · 4 matches found</p></div>
+            <span class="d-pill bad">Action needed</span>
+          </div>
+
+          <div class="match-row">
+            <div class="match-score">96%</div>
+            <div style="flex:1;min-width:0;">
+              <p style="margin:0;font-weight:600;font-size:13.5px;">Pascal Cotat "La Grande Côte", Sancerre 2020</p>
+              <p class="d-t-sm d-t-soft" style="margin:3px 0 0;">Same appellation · Sauvignon Blanc · similar minerality profile</p>
+            </div>
+            <p class="mono d-t-sm d-t-soft" style="margin-right:8px;">$112 / btl</p>
+            <span class="d-pill neutral">Burgundy Wine Co.</span>
+            <button class="dbtn dbtn-accent dbtn-sm">Switch on menu</button>
+          </div>
+
+          <div class="match-row">
+            <div class="match-score">91%</div>
+            <div style="flex:1;min-width:0;">
+              <p style="margin:0;font-weight:600;font-size:13.5px;">Henri Bourgeois "Les Baronnes", Sancerre 2021</p>
+              <p class="d-t-sm d-t-soft" style="margin:3px 0 0;">Same appellation & vintage · slightly riper profile</p>
+            </div>
+            <p class="mono d-t-sm d-t-soft" style="margin-right:8px;">$89 / btl</p>
+            <span class="d-pill neutral">Coastal Fine Wines</span>
+            <button class="dbtn dbtn-line dbtn-sm">Switch on menu</button>
+          </div>
+
+          <div class="match-row">
+            <div class="match-score mid">78%</div>
+            <div style="flex:1;min-width:0;">
+              <p style="margin:0;font-weight:600;font-size:13.5px;">Domaine Daniel Chotard, Sancerre 2021</p>
+              <p class="d-t-sm d-t-soft" style="margin:3px 0 0;">Same region · lighter price tier than original</p>
+            </div>
+            <p class="mono d-t-sm d-t-soft" style="margin-right:8px;">$74 / btl</p>
+            <span class="d-pill neutral">Burgundy Wine Co.</span>
+            <button class="dbtn dbtn-line dbtn-sm">Switch on menu</button>
+          </div>
+
+          <div class="match-row">
+            <div class="match-score mid">71%</div>
+            <div style="flex:1;min-width:0;">
+              <p style="margin:0;font-weight:600;font-size:13.5px;">Domaine Fournier "Les Belles Vignes" 2020</p>
+              <p class="d-t-sm d-t-soft" style="margin:3px 0 0;">Loire Sauvignon Blanc · adjacent appellation</p>
+            </div>
+            <p class="mono d-t-sm d-t-soft" style="margin-right:8px;">$96 / btl</p>
+            <span class="d-pill neutral">Coastal Fine Wines</span>
+            <button class="dbtn dbtn-line dbtn-sm">Switch on menu</button>
+          </div>
+        </div>
+
+        <div class="dgrid d-mt16" style="grid-template-columns:1fr 1fr;">
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Match accuracy</h3><p class="sub">How Connector is matching, last 30 days</p></div></div>
+            <p class="kpi-value mono" style="font-size:22px;">93%</p>
+            <p class="d-t-sm d-t-soft d-mt8">Of 31 suggested matches, 29 were accepted as suitable replacements.</p>
+          </div>
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Connected distributors</h3></div></div>
+            <div class="alert-row"><span class="alert-dot good"></span><div class="alert-text"><p>Burgundy Wine Co.</p><p class="meta">1,240 SKUs synced</p></div></div>
+            <div class="alert-row"><span class="alert-dot good"></span><div class="alert-text"><p>Coastal Fine Wines</p><p class="meta">860 SKUs synced</p></div></div>
+            <div class="alert-row"><span class="alert-dot good"></span><div class="alert-text"><p>Pacific Provisions</p><p class="meta">2,110 SKUs synced</p></div></div>
+          </div>
+        </div>
+      </section>
+      <section class="dash-page" id="page-procurement">
+        <div class="dash-page-head">
+          <div>
+            <p class="dash-eyebrow">Module</p>
+            <h1 class="dash-h1">Procurement</h1>
+            <p class="dash-h1-sub">Place and track orders with your connected distributors.</p>
+          </div>
+          <button class="dbtn dbtn-accent">+ New order</button>
+        </div>
+
+        <div class="module-tabs">
+          <span class="module-tab active" data-tab-target="open">Open orders (6)</span>
+          <span class="module-tab" data-tab-target="history">History</span>
+        </div>
+
+        <div data-tab-panel="open">
+          <div class="dcard">
+            <table class="dtable">
+              <thead><tr><th>Order</th><th>Distributor</th><th>Items</th><th>Total</th><th>Status</th><th>Expected</th></tr></thead>
+              <tbody>
+                <tr><td class="cell-strong mono">#HO-3091</td><td>Burgundy Wine Co.</td><td class="cell-soft">12 line items</td><td class="mono">$4,820</td><td><span class="d-pill warn">Awaiting confirmation</span></td><td class="cell-soft">Jul 2</td></tr>
+                <tr><td class="cell-strong mono">#HO-3090</td><td>Pacific Provisions</td><td class="cell-soft">8 line items</td><td class="mono">$1,960</td><td><span class="d-pill good">Confirmed</span></td><td class="cell-soft">Jul 1</td></tr>
+                <tr><td class="cell-strong mono">#HO-3088</td><td>Coastal Fine Wines</td><td class="cell-soft">6 line items</td><td class="mono">$3,140</td><td><span class="d-pill good">Confirmed</span></td><td class="cell-soft">Jul 1</td></tr>
+                <tr><td class="cell-strong mono">#HO-3086</td><td>Burgundy Wine Co.</td><td class="cell-soft">4 line items</td><td class="mono">$2,210</td><td><span class="d-pill warn">Awaiting confirmation</span></td><td class="cell-soft">Jul 3</td></tr>
+                <tr><td class="cell-strong mono">#HO-3083</td><td>Pacific Provisions</td><td class="cell-soft">15 line items</td><td class="mono">$5,480</td><td><span class="d-pill good">In transit</span></td><td class="cell-soft">Jun 30</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div data-tab-panel="history" style="display:none;">
+          <div class="dempty">
+            <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 6l1.5 13.5A2 2 0 006.5 21h11a2 2 0 002-2.5L21 6"/></svg></div>
+            Order history will appear here once orders are completed.
+          </div>
+        </div>
+      </section>
+      <section class="dash-page" id="page-analytics">
+        <div class="dash-page-head">
+          <div>
+            <p class="dash-eyebrow">Module</p>
+            <h1 class="dash-h1">Analytics</h1>
+            <p class="dash-h1-sub">How guests use your digital menu and how your platform footprint is performing.</p>
+          </div>
+          <button class="dbtn dbtn-line">Export CSV</button>
+        </div>
+
+        <div class="dgrid dgrid-3">
+          <div class="dcard">
+            <p class="kpi-label">Digital menu views</p>
+            <p class="kpi-value mono">2,840</p>
+            <span class="kpi-delta up"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 19L19 5M19 5H9M19 5v10"/></svg>18% <span class="vs">vs last month</span></span>
+          </div>
+          <div class="dcard">
+            <p class="kpi-label">Most viewed section</p>
+            <p class="kpi-value mono" style="font-size:20px;">Wine list</p>
+            <span class="kpi-delta" style="color:var(--d-ink-faint);">61% of all section views</span>
+          </div>
+          <div class="dcard">
+            <p class="kpi-label">Avg. session length</p>
+            <p class="kpi-value mono">3m 12s</p>
+            <span class="kpi-delta up"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 19L19 5M19 5H9M19 5v10"/></svg>9% <span class="vs">vs last month</span></span>
+          </div>
+        </div>
+
+        <div class="dgrid d-mt16" style="grid-template-columns:1.4fr 1fr;">
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Section views</h3><p class="sub">Last 30 days</p></div></div>
+            <div style="display:flex;flex-direction:column;gap:13px;">
+              <div><div class="d-flex d-spread d-t-sm d-mb0"><span>Wine list</span><span class="d-t-soft mono">1,732</span></div><div class="progress d-mt8"><span style="width:61%"></span></div></div>
+              <div><div class="d-flex d-spread d-t-sm d-mb0"><span>Bar & cocktails</span><span class="d-t-soft mono">682</span></div><div class="progress d-mt8"><span style="width:24%"></span></div></div>
+              <div><div class="d-flex d-spread d-t-sm d-mb0"><span>Pastry & dessert</span><span class="d-t-soft mono">426</span></div><div class="progress d-mt8"><span style="width:15%"></span></div></div>
+            </div>
+          </div>
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Platform usage</h3><p class="sub">Active staff this week</p></div></div>
+            <div class="alert-row"><span class="alert-dot good"></span><div class="alert-text"><p>Marco — Menu, Waste & Inventory</p><p class="meta">14 sessions</p></div></div>
+            <div class="alert-row"><span class="alert-dot good"></span><div class="alert-text"><p>Elena — Procurement, Connector</p><p class="meta">9 sessions</p></div></div>
+            <div class="alert-row"><span class="alert-dot neutral"></span><div class="alert-text"><p>You — Overview, Analytics</p><p class="meta">6 sessions</p></div></div>
+          </div>
+        </div>
+      </section>
+      <section class="dash-page" id="page-profile">
+        <div class="dash-page-head">
+          <div>
+            <p class="dash-eyebrow">Account</p>
+            <h1 class="dash-h1">Profile & Settings</h1>
+            <p class="dash-h1-sub">How your restaurant appears on Hostera, and who on your team has access.</p>
+          </div>
+          <button class="dbtn dbtn-accent">Save changes</button>
+        </div>
+
+        <div class="dgrid d-mt16" style="grid-template-columns:1fr 1fr;">
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Restaurant profile</h3></div></div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div><p class="d-t-sm d-t-soft d-mb0">Display name</p><p style="margin:4px 0 0;font-weight:600;">Novikov LA</p></div>
+              <div><p class="d-t-sm d-t-soft d-mb0">Cuisine</p><p style="margin:4px 0 0;">Contemporary, tasting menu</p></div>
+              <div><p class="d-t-sm d-t-soft d-mb0">Location</p><p style="margin:4px 0 0;">West Hollywood, Los Angeles, CA</p></div>
+              <div><p class="d-t-sm d-t-soft d-mb0">Price tier</p><p style="margin:4px 0 0;">$$$$</p></div>
+            </div>
+          </div>
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Team access</h3></div><button class="dbtn dbtn-line dbtn-sm">+ Invite</button></div>
+            <table class="dtable">
+              <thead><tr><th>Name</th><th>Role</th><th>Access</th></tr></thead>
+              <tbody>
+                <tr><td class="cell-strong">You</td><td class="cell-soft">Owner</td><td><span class="d-pill accent">Full access</span></td></tr>
+                <tr><td class="cell-strong">Marco R.</td><td class="cell-soft">Head Chef</td><td><span class="d-pill neutral">Menu, Waste</span></td></tr>
+                <tr><td class="cell-strong">Elena T.</td><td class="cell-soft">GM</td><td><span class="d-pill neutral">Procurement, Connector</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section class="dash-page" id="page-billing">
+        <div class="dash-page-head">
+          <div>
+            <p class="dash-eyebrow">Account</p>
+            <h1 class="dash-h1">Billing & Subscription</h1>
+            <p class="dash-h1-sub">Your current plan, usage, and invoice history.</p>
+          </div>
+        </div>
+
+        <div class="dgrid d-mt16" style="grid-template-columns:1fr 1fr;">
+          <div class="dcard">
+            <div class="panel-title">
+              <div><h3>Current plan</h3><p class="sub">Pilot partner — first 6 months</p></div>
+              <span class="d-pill accent">Active</span>
+            </div>
+            <p class="kpi-value mono" style="font-size:22px;">$0<span class="d-t-sm d-t-soft" style="font-weight:400;"> / mo during pilot</span></p>
+            <p class="d-t-sm d-t-soft d-mt8">Full access to all modules. Standard pricing begins after pilot review.</p>
+            <button class="dbtn dbtn-line d-mt16">Manage plan</button>
+          </div>
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Recent invoices</h3></div></div>
+            <table class="dtable">
+              <thead><tr><th>Period</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>May 2026</td><td class="mono">$0.00</td><td><span class="d-pill good">Pilot</span></td></tr>
+                <tr><td>Apr 2026</td><td class="mono">$0.00</td><td><span class="d-pill good">Pilot</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section class="dash-page" id="page-support">
+        <div class="dash-page-head">
+          <div>
+            <p class="dash-eyebrow">Account</p>
+            <h1 class="dash-h1">Help & Support</h1>
+            <p class="dash-h1-sub">Reach your Hostera pilot contact, or browse setup guides.</p>
+          </div>
+        </div>
+
+        <div class="dgrid d-mt16" style="grid-template-columns:1fr 1fr;">
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Your pilot contact</h3></div></div>
+            <div class="d-flex d-gap12">
+              <div class="avatar" style="width:42px;height:42px;border-radius:10px;">JD</div>
+              <div>
+                <p style="margin:0;font-weight:600;font-size:14px;">Jordan Diaz</p>
+                <p class="d-t-sm d-t-soft" style="margin:2px 0 0;">Partner success, Hostera</p>
+              </div>
+            </div>
+            <button class="dbtn dbtn-accent d-mt16">Message Jordan</button>
+          </div>
+          <div class="dcard">
+            <div class="panel-title"><div><h3>Guides</h3></div></div>
+            <div class="alert-row"><span class="alert-dot neutral"></span><div class="alert-text"><p>Setting up your wine list</p></div></div>
+            <div class="alert-row"><span class="alert-dot neutral"></span><div class="alert-text"><p>Connecting a distributor</p></div></div>
+            <div class="alert-row"><span class="alert-dot neutral"></span><div class="alert-text"><p>Reading your waste report</p></div></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="dash.js"></script>
+</body>
+</html>

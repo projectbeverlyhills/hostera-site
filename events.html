@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events — Hostera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="guest.css">
+</head>
+<body class="gbody">
+
+<header class="gnav">
+  <div class="wrap gnav-row">
+    <a href="explore.html" class="logo"><span class="logo-mark" aria-hidden="true"></span>Hostera</a>
+    <nav class="gnav-links" aria-label="Guest">
+      <a href="explore.html">Explore</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="table-moments.html">Table Moments</a>
+      <a href="taste-profile.html">Taste Profile</a>
+    </nav>
+    <div class="gnav-right">
+      <div class="grel">
+        <button class="gicon-btn" id="gNotifBtn" aria-label="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <span class="gbadge" data-notif-count>3</span>
+        </button>
+        <div class="gmenu" id="gNotifMenu" data-open="false" style="width:300px;">
+          <a href="booking.html#mybookings"><span>Nightjar confirmed your table for Jul 11, 7:30 PM</span></a>
+          <a href="events.html"><span>New event at Sable Point: Sunset Oyster Hour</span></a>
+          <a href="private-dining.html"><span>Tallow & Salt sent a private dining proposal</span></a>
+        </div>
+      </div>
+      <div class="gaccount">
+        <button class="gavatar-btn" id="gAvatarBtn"><span class="gavatar" data-guest-initials>EM</span><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></button>
+        <div class="gmenu" id="gAccountMenu" data-open="false">
+          <a href="booking.html#mybookings">My Reservations</a>
+          <a href="private-dining.html">Private Dining</a>
+          <a href="profile.html">Profile &amp; Settings</a>
+          <hr>
+          <a href="index.html">Sign out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="gwrap">
+  <div class="gpage-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+    <div>
+      <p class="gpage-eyebrow">Events &amp; Calendar</p>
+      <h1 class="gpage-title">What's on the table</h1>
+    </div>
+    <div class="gtabs" data-gtabs>
+      <button class="gtab active" data-tab="foryou">For You</button>
+      <button class="gtab" data-tab="incity">In <span id="cityLabel">Los Angeles</span></button>
+    </div>
+  </div>
+
+  <div class="events-layout">
+    <div>
+      <div class="event-feed" data-tab-panel="foryou" id="feedForYou"></div>
+      <div class="event-feed" data-tab-panel="incity" id="feedCity" style="display:none;"></div>
+    </div>
+    <div class="mini-cal" id="miniCal"></div>
+  </div>
+</main>
+
+<script src="guest-data.js"></script>
+<script src="guest.js"></script>
+<script>
+(function () {
+  var D = window.HOSTERA_DATA;
+  if (!D) return;
+
+  var cityShort = D.guest.city.split(',')[0];
+  document.getElementById('cityLabel').textContent = cityShort;
+
+  function eventCard(ev) {
+    var r = D.byId(ev.restaurantId);
+    var d = Hostera.fmtDateShort(ev.date);
+    return '<div class="event-card">' +
+      '<div class="event-date-block"><span class="mon">' + d.mon + '</span><span class="day">' + d.day + '</span></div>' +
+      '<img class="event-photo" src="' + r.hero + '" alt="">' +
+      '<div class="event-body"><p class="event-type">' + ev.type + ' &middot; ' + r.name + '</p>' +
+      '<p class="event-title">' + ev.title + '</p>' +
+      '<p class="event-meta">' + ev.time + ' &middot; ' + r.neighborhood + ', ' + r.city + ' &middot; ' + ev.price + '</p>' +
+      '<p class="event-desc">' + ev.desc + '</p></div></div>';
+  }
+
+  var forYou = D.events.filter(function (ev) { return D.guest.subscriptions.indexOf(ev.restaurantId) > -1; });
+  var inCity = D.events.filter(function (ev) { return D.byId(ev.restaurantId).city === D.guest.city; });
+
+  document.getElementById('feedForYou').innerHTML = forYou.length ? forYou.map(eventCard).join('') :
+    '<div class="gempty"><p>No events from your subscribed restaurants yet. Subscribe to more restaurants from their profile page to fill this feed.</p></div>';
+  document.getElementById('feedCity').innerHTML = inCity.length ? inCity.map(eventCard).join('') :
+    '<div class="gempty"><p>No upcoming events in ' + D.guest.city + ' right now — check back soon.</p></div>';
+
+  Hostera.renderMiniCalendar('miniCal', D.events.map(function (e) { return e.date; }));
+})();
+</script>
+</body>
+</html>
