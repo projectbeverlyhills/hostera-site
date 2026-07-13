@@ -1,4 +1,51 @@
 (function(){
+  // Account — the guard in <head> already redirected anyone without a
+  // Restaurant session, so by this point there is one.
+  var session = Hostera.getSession();
+  if(session){
+    var fields = {
+      accountName: session.name,
+      accountRole: session.role + ' · Active',
+      accountInitials: session.initials,
+      topbarInitials: session.initials
+    };
+    Object.keys(fields).forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.textContent = fields[id];
+    });
+
+    // Both entrances into the menu app belong to the signed-in restaurant, and
+    // each opens its own surface directly — the guest menu and Waste Mode are
+    // separate tools, so neither should land on a chooser screen.
+    // Route format: winegallery/index.html#/<restaurantId>/<menu|waste>
+    var base = 'winegallery/index.html#/' + session.restaurantId + '/';
+    var links = {
+      liveMenuLink: session.defaultMenu || 'bar',
+      wasteModeLink: 'waste'
+    };
+    if(session.restaurantId){
+      Object.keys(links).forEach(function(id){
+        var el = document.getElementById(id);
+        if(el) el.href = base + links[id];
+      });
+    }
+
+    // The menu app remembers the guest's theme choice under localStorage
+    // 'theme', and it now shares an origin with the backoffice. Clearing the key
+    // means the menu always opens light, whatever the last guest picked.
+    var menuLink = document.getElementById('liveMenuLink');
+    if(menuLink){
+      menuLink.addEventListener('click', function(){
+        try { localStorage.removeItem('theme'); } catch(e) {}
+      });
+    }
+  }
+
+  var signOutBtn = document.getElementById('signOutBtn');
+  if(signOutBtn){
+    signOutBtn.addEventListener('click', function(){ Hostera.signOut(); });
+  }
+
   // Theme toggle
   var root = document.documentElement;
   var toggle = document.getElementById('themeToggle');

@@ -1,33 +1,117 @@
-# Hostera — landing page (Titanium & Cognac)
+# Hostera
 
-Static, framework-free first page for Hostera: vanilla HTML/CSS/JS. Built to be dropped
-into an existing project folder (e.g. `public/`, `src/landing/`, or served as-is).
+Static, framework-free site: vanilla HTML/CSS/JS, no build step. Every page is a plain
+`.html` file at the root, so the URLs are exactly the file names and any web server can
+host the folder as-is. Styles and scripts live under `assets/`, named after the surface
+they belong to.
 
-## Files
+## Layout
 
 ```
-index.html     Markup only — no inline styles or scripts
-styles.css      All styles, driven by CSS custom properties (tokens) in :root
-main.js        All interactivity, grouped into self-contained sections
-assets/images/  Empty for now — restaurant photos currently load from Unsplash
+index.html          Landing page
+explore.html …      Guest cabinet (8 pages: explore, booking, events, restaurant,
+                    profile, private-dining, table-moments, taste-profile)
+dashboard.html      Restaurant backoffice
+distributor.html    Distributor cabinet
+
+assets/
+  css/
+    base.css        Design tokens (:root) + shared components. Landing + guest.
+    guest.css       Guest cabinet
+    restaurant.css  Restaurant backoffice
+    distributor.css Distributor cabinet
+  js/
+    auth.js         Session, shared by every surface (see "Sign-in and sessions")
+    landing.js      Landing page
+    guest.js        Guest cabinet
+    guest-data.js   Mock restaurant/booking data for the guest cabinet
+    restaurant.js   Restaurant backoffice
+    distributor.js  Distributor cabinet
+  img/              Empty for now — photos currently load from Unsplash
+                    (favicon.svg lives here)
+
+winegallery/        Copy of the live menu app (see "The live menu")
+docs/               Russian README, distributor handoff notes
+sync-menu.sh        Refreshes winegallery/ from the menu's own repository
+serve.sh            Local preview
 ```
 
-Other surfaces in this folder: Guest cabinet (`explore.html` + `guest.css`/`guest.js`),
-Restaurant Backoffice (`dashboard.html` + `dash.css`/`dash.js`), and the Distributor
-Cabinet (`distributor.html` + `dist.css`/`dist.js` — see `DISTRIBUTOR-HANDOFF.md`).
-The sign-in modal routes all three roles: Guest → explore, Restaurant → dashboard,
-Distributor → distributor cabinet.
+Each surface owns one CSS and one JS file, and `assets/js/auth.js` is the only thing they share —
+so a page's dependencies are readable straight from its `<head>`.
+
+## Sign-in and sessions
+
+`assets/js/auth.js` holds the whole session in one localStorage record, so every page agrees on
+who is signed in. Credentials are checked against the `ACCOUNTS` list at the top of that
+file — currently one pilot account, `Novikov` / `La24`, which opens the Novikov Beverly
+Hills backoffice.
+
+**This is a gate, not security.** The password sits in a file the browser downloads, so
+anyone who opens the page source can read it. It keeps the cabinet out of reach of a
+passer-by and nothing more — do not put anything sensitive behind it until a server
+checks the password. When that backend exists, only `signIn()`/`getSession()` change;
+the pages talk to nothing but this module.
+
+Current release ships **Restaurant** only. The Guest and Distributor tabs in the sign-in
+modal are disabled and marked "soon" — their pages still exist and still work if you
+re-enable the tabs in `index.html`.
+
+A page protects itself declaratively, which redirects signed-out visitors before paint:
+
+```html
+<script src="assets/js/auth.js" data-require="Restaurant"></script>
+```
+
+## The live menu (`winegallery/`)
+
+`winegallery/` is a **copy** of the standalone menu app, which is developed in its own
+repository. It ships with the site because the Restaurant backoffice links into it.
+
+The menu app and Waste Mode are two separate tools, so the backoffice has one entrance
+each and neither passes through a chooser screen. Routes are
+`#/<restaurantId>/<menu|waste>`, built in `assets/js/restaurant.js` from the session:
+
+| Backoffice | Button | Opens |
+|---|---|---|
+| Menu → Guest preview | Open live menu | `#/novikov_bh/bar` — the restaurant's `defaultMenu` |
+| Waste & Inventory | Open Waste Mode | `#/novikov_bh/waste` |
+
+The menu always opens in the light theme: it remembers the guest's choice under the
+`theme` localStorage key, and since it now shares an origin with the backoffice,
+`assets/js/restaurant.js` clears that key when the "Open live menu" link is clicked.
+
+Refresh the copy with:
+
+```sh
+./sync-menu.sh                          # from the default source path
+MENU_SRC=/path/to/winegallery ./sync-menu.sh
+```
+
+Two things it needs from the server:
+
+- It must be served at **`/winegallery/`** — its PWA and asset paths are absolute.
+- **Do not** set a `Service-Worker-Allowed: /` header. The menu's service worker asks
+  for site-wide scope and falls back to `/winegallery/` on its own; granting the wider
+  scope would let it control the Hostera pages too.
+
+Menu content (dishes, prices, photo URLs) is pulled live from published Google Sheets —
+see the `csvUrl` fields in `winegallery/configs/*.json`. Nothing to deploy for content
+changes. Note the item photos are hosted on Google Drive and Google rate-limits them
+(HTTP 429) when a menu page requests them all at once, so photos often come up blank;
+rehosting them is the fix.
 
 ## How to preview
 
-No build step needed. Either:
-- Open `index.html` directly in a browser, or
-- Serve the folder locally, e.g. `npx serve .` or `python3 -m http.server`, and visit
-  `http://localhost:<port>/index.html`
+No build step needed. Serve the folder — do not open `index.html` from the filesystem,
+because the session and the menu both need a real origin:
+
+```sh
+./serve.sh                # then open http://localhost:8000
+```
 
 ## Integrating into an existing project
 
-Copy the three files (`index.html`, `styles.css`, `main.js`) into your target folder and
+Copy the three files (`index.html`, `assets/css/base.css`, `assets/js/landing.js`) into your target folder and
 adjust the `<link>`/`<script>` paths in `index.html` if your build tool expects a
 different structure (e.g. Vite/webpack asset imports instead of plain `<link>` tags).
 The CSS and JS have no external dependencies and no build-time requirements, so they
@@ -36,7 +120,7 @@ changes.
 
 ## Design tokens
 
-All colors, radii, and the max content width are defined once in `styles.css` under
+All colors, radii, and the max content width are defined once in `assets/css/base.css` under
 `:root`. To re-theme the page (e.g. switch to one of the other two palette directions —
 Obsidian & Sandstone or Monolith & Pinot), only the token values need to change; no
 component rule references a raw hex value directly.
@@ -71,7 +155,7 @@ called out below so they're easy to find with a text search:
 - **City list / map** — the US map is an illustrative SVG, not a real geographic
   map. The city dropdown and map pins are hardcoded to 6 example cities, not pulled
   from real data.
-- **Apply form submission** — `main.js` currently prevents default submit and shows
+- **Apply form submission** — `assets/js/landing.js` currently prevents default submit and shows
   an inline "design preview" message. Replace with a real handler (fetch/POST to
   your backend, or a form service) before launch, including server-side validation.
 - **Sign-in form** — the modal is visual only; it does not call any auth endpoint yet.

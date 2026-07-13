@@ -16,14 +16,14 @@ so the two cabinets tell one story from both sides of the bridge.
 
 ```
 distributor.html   Markup — all 8 pages in one document (SPA-style page switching)
-dist.css           All styles. Fully isolated: --dist- tokens, dist-/ds- classes.
-                   Does NOT load or inherit from styles.css / guest.css / dash.css.
+assets/css/distributor.css           All styles. Fully isolated: --dist- tokens, dist-/ds- classes.
+                   Does NOT load or inherit from assets/css/base.css / assets/css/guest.css / assets/css/restaurant.css.
                    Cross-reference map documented in the file header.
-dist.js            Theme toggle, sidebar navigation, module tabs, plus two demo-only
+assets/js/distributor.js            Theme toggle, sidebar navigation, module tabs, plus two demo-only
                    interactions (order confirm, availability confirm).
 ```
 
-`main.js` (landing) was updated: the Distributor tab in the sign-in modal now routes
+`assets/js/landing.js` (landing) was updated: the Distributor tab in the sign-in modal now routes
 to `distributor.html` (previously a "coming soon" note).
 
 ## Modules
@@ -58,16 +58,16 @@ theme toggle, page navigation, module tabs, cross-module `data-goto` deep links,
 Backend integration points, marked with `TODO` comments in the source:
 - Paginated SKU list + search/filter (Catalog)
 - SKU↔curated-card linking flow (Catalog, unlinked tab)
-- Order confirmation API + status webhooks to Segment 2 Procurement (Orders, dist.js)
-- Availability response API + restaurant notification (dist.js)
-- Auth: sign-in modal routes without credential checks (main.js)
+- Order confirmation API + status webhooks to Segment 2 Procurement (Orders, assets/js/distributor.js)
+- Availability response API + restaurant notification (assets/js/distributor.js)
+- Auth: sign-in modal routes without credential checks (assets/js/landing.js)
 
 ## Design system
 
 Titanium & Cognac. Tokens prefixed `--dist-`, declared in `:root` /
 `[data-theme="light"]` and `[data-theme="dark"]`. Dark theme is a separate muted
 token set, not an inversion (accent `#D9883F` dark vs `#C76B28` light — same rule
-as `--d-accent` in dash.css). Fonts: Inter (UI) + IBM Plex Mono (data), matching
+as `--d-accent` in assets/css/restaurant.css). Fonts: Inter (UI) + IBM Plex Mono (data), matching
 the other B2B surface. B2B buttons are 10px rounded rectangles, not pills.
 ADA baseline: skip link, `:focus-visible` outlines, `aria-label`s on icon buttons,
 `role="switch"` on the theme toggle, `role="img"` + labels on CSS charts.

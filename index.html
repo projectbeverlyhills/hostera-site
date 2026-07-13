@@ -7,7 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/base.css">
 </head>
 <body>
 
@@ -406,21 +407,26 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <h3 id="signInTitle">Sign in to Hostera</h3>
-    <p class="modal-sub">Choose your account type to continue.</p>
+    <p class="modal-sub">Restaurant accounts are live. Guest and distributor cabinets are opening soon.</p>
+    <div class="resume-bar" id="signInResume" hidden>
+      <p>Still signed in as <strong class="resume-who"></strong>.</p>
+      <p><a class="resume-open" href="dashboard.html">Open cabinet</a> · <a class="resume-out" href="#">Sign out</a></p>
+    </div>
     <div class="role-tabs" role="tablist">
-      <button class="role-tab active" role="tab" aria-selected="true">Guest</button>
-      <button class="role-tab" role="tab" aria-selected="false">Restaurant</button>
-      <button class="role-tab" role="tab" aria-selected="false">Distributor</button>
+      <button class="role-tab" role="tab" aria-selected="false" data-role="Guest" disabled>Guest <span class="role-tab-soon">soon</span></button>
+      <button class="role-tab active" role="tab" aria-selected="true" data-role="Restaurant">Restaurant</button>
+      <button class="role-tab" role="tab" aria-selected="false" data-role="Distributor" disabled>Distributor <span class="role-tab-soon">soon</span></button>
     </div>
     <form>
       <div class="modal-field">
-        <label for="modalEmail">Email</label>
-        <input id="modalEmail" type="email" autocomplete="email" required>
+        <label for="modalUsername">Username</label>
+        <input id="modalUsername" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
       </div>
       <div class="modal-field">
         <label for="modalPassword">Password</label>
         <input id="modalPassword" type="password" autocomplete="current-password" required>
       </div>
+      <p class="modal-error" id="signInError" role="alert" hidden>Wrong username or password.</p>
       <button type="submit" class="btn btn-dark btn-block btn-lg">Sign in</button>
     </form>
     <div class="modal-divider">or</div>
@@ -429,7 +435,8 @@
   </div>
 </div>
 
-<script src="main.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/landing.js"></script>
 
 </body>
 </html>

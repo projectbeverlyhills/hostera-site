@@ -12,9 +12,27 @@
 
   if (!signInModal || !openBtn || !closeBtn) return;
 
+  // The header button always opens the form: signing in under a different
+  // account has to stay possible even when a session is already open.
   openBtn.addEventListener('click', function () {
     signInModal.hidden = false;
+    document.getElementById('modalUsername').focus();
   });
+
+  // An open session is not a reason to hide the form — it just adds a shortcut
+  // back into the cabinet above it, and a way out.
+  var resume = document.getElementById('signInResume');
+  var session = Hostera.getSession();
+  if (session && resume) {
+    resume.hidden = false;
+    resume.querySelector('.resume-who').textContent = session.name;
+    resume.querySelector('.resume-open').href = Hostera.homeFor(session.role);
+    resume.querySelector('.resume-out').addEventListener('click', function (e) {
+      e.preventDefault();
+      Hostera.signOut(true);
+      resume.hidden = true;
+    });
+  }
 
   closeBtn.addEventListener('click', function () {
     signInModal.hidden = true;
@@ -30,32 +48,46 @@
     if (e.key === 'Escape' && !signInModal.hidden) signInModal.hidden = true;
   });
 
-  // Role tabs inside the modal: Guest / Restaurant / Distributor
+  // Role tabs inside the modal. Guest and Distributor ship later, so their tabs
+  // are disabled in the markup and only Restaurant can become active here. The
+  // tab is presentation only — the account itself carries the role.
   var tabs = document.querySelectorAll('.role-tab');
-  var roleLabels = ['Guest', 'Restaurant', 'Distributor'];
-  var activeRole = 'Guest';
-  tabs.forEach(function (tab, i) {
+  tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
+      if (tab.disabled) return;
       tabs.forEach(function (t) {
         t.classList.remove('active');
         t.setAttribute('aria-selected', 'false');
       });
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
-      activeRole = roleLabels[i];
-      // TODO: swap form fields/endpoint based on selected role when wiring up real auth
     });
   });
 
-  // Demo sign-in: routes to the matching segment. Front-end-only preview,
-  // no credentials are checked. TODO: replace with real auth before launch.
+  // Sign-in. Credentials are checked against the pilot accounts in auth.js —
+  // in the browser, so this is a gate and not real security. TODO: replace with
+  // a server-side check before the cabinet holds anything sensitive.
   var signInForm = signInModal.querySelector('form');
+  var errorMsg = document.getElementById('signInError');
+
   if (signInForm) {
     signInForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (activeRole === 'Guest') window.location.href = 'explore.html';
-      else if (activeRole === 'Restaurant') window.location.href = 'dashboard.html';
-      else window.location.href = 'distributor.html';
+      var username = document.getElementById('modalUsername').value;
+      var password = document.getElementById('modalPassword').value;
+      var session = Hostera.signIn(username, password);
+
+      if (!session) {
+        if (errorMsg) errorMsg.hidden = false;
+        document.getElementById('modalPassword').value = '';
+        return;
+      }
+      window.location.href = Hostera.homeFor(session.role);
+    });
+
+    // Clear the error as soon as the visitor starts correcting the input.
+    signInForm.addEventListener('input', function () {
+      if (errorMsg) errorMsg.hidden = true;
     });
   }
 })();

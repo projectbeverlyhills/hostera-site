@@ -7,7 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="dash.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/restaurant.css">
+<!-- Redirects signed-out visitors to the landing page before anything paints. -->
+<script src="assets/js/auth.js" data-require="Restaurant"></script>
 </head>
 <body class="dash">
 
@@ -17,13 +20,13 @@
 
   <!-- ===================== SIDEBAR ===================== -->
   <aside class="dash-sidebar">
-    <div class="dash-brand"><span class="mark" aria-hidden="true"></span>Hostera</div>
+    <a class="dash-brand" href="index.html"><span class="mark" aria-hidden="true"></span>Hostera</a>
 
     <div class="dash-account">
-      <div class="avatar">NV</div>
+      <div class="avatar" id="accountInitials">NV</div>
       <div class="who">
-        <p class="name">Novikov LA</p>
-        <p class="role">Restaurant · Active</p>
+        <p class="name" id="accountName">Novikov LA</p>
+        <p class="role" id="accountRole">Restaurant · Active</p>
       </div>
     </div>
 
@@ -78,7 +81,7 @@
         <span>Dark mode</span>
         <div class="theme-toggle-switch" id="themeToggle" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle dark mode"><div class="knob"></div></div>
       </div>
-      <button class="dash-navlink">
+      <button class="dash-navlink" id="signOutBtn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
         Sign out
       </button>
@@ -99,7 +102,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
           <span class="dot"></span>
         </button>
-        <div class="avatar" style="width:36px;height:36px;border-radius:9px;">NV</div>
+        <div class="avatar" id="topbarInitials" style="width:36px;height:36px;border-radius:9px;">NV</div>
       </div>
     </header>
 
@@ -299,7 +302,7 @@
               <p class="d-t-sm d-t-faint d-mt16">Guest view — read only, updates live as you edit.</p>
             </div>
           </div>
-          <a class="dbtn dbtn-line" href="winegallery/index.html#/novikov_bh" target="_blank" rel="noopener" style="margin-top:16px;display:inline-flex;text-decoration:none;">Open live menu&nbsp;&#8599;</a>
+          <a class="dbtn dbtn-line" id="liveMenuLink" href="winegallery/index.html#/novikov_bh" target="_blank" rel="noopener" style="margin-top:16px;display:inline-flex;text-decoration:none;">Open live menu&nbsp;&#8599;</a>
         </div>
       </section>
       <section class="dash-page" id="page-waste">
@@ -309,7 +312,10 @@
             <h1 class="dash-h1">Waste & Inventory</h1>
             <p class="dash-h1-sub">Track stock levels, log write-offs, and see what waste is costing you.</p>
           </div>
-          <button class="dbtn dbtn-accent">+ Log waste entry</button>
+          <div class="dash-head-actions">
+            <a class="dbtn dbtn-line" id="wasteModeLink" href="winegallery/index.html#/novikov_bh/waste" target="_blank" rel="noopener" style="display:inline-flex;text-decoration:none;">Open Waste Mode&nbsp;&#8599;</a>
+            <button class="dbtn dbtn-accent">+ Log waste entry</button>
+          </div>
         </div>
 
         <div class="dgrid dgrid-3">
@@ -620,6 +626,6 @@
   </div>
 </div>
 
-<script src="dash.js"></script>
+<script src="assets/js/restaurant.js"></script>
 </body>
 </html>

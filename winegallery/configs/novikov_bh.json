@@ -1,0 +1,65 @@
+{
+  "restaurantId": "novikov_bh",
+  "name": "Novikov Beverly Hills",
+  "branding": {
+    "logo": "assets/novikov-logo.png",
+    "subtitle": "Wine & Desserts",
+    "logoOnly": true
+  },
+  "logoUrl": "assets/novikov-logo.png",
+  "defaultLanguage": "en",
+  "enabledLanguages": ["en"],
+  "features": {
+    "waste": {
+      "enabled": true,
+      "title": "Waste Mode"
+    }
+  },
+  "currency": "USD",
+  "hide86": false,
+  "menus": [
+    {
+      "key": "bar",
+      "title": "Bar",
+      "type": "bar",
+      "layout": "list",
+      "csvUrl": {
+        "en": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbbBsIIBl9xIRAguRXzpMczI_FdJRe-tURslWWItFsZUTFxPhVrt0RmpjdUc8kMcZh-28wO6EBRPNZ/pub?gid=1903781444&single=true&output=csv"
+      }
+    },
+    {
+      "key": "coffee",
+      "title": "Coffee",
+      "type": "coffee",
+      "layout": "list",
+      "csvUrl": {
+        "en": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbbBsIIBl9xIRAguRXzpMczI_FdJRe-tURslWWItFsZUTFxPhVrt0RmpjdUc8kMcZh-28wO6EBRPNZ/pub?gid=2012329692&single=true&output=csv"
+      }
+    },
+    {
+      "key": "pastry",
+      "title": "Pastry",
+      "type": "pastry",
+      "layout": "list",
+      "csvUrl": {
+        "en": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbbBsIIBl9xIRAguRXzpMczI_FdJRe-tURslWWItFsZUTFxPhVrt0RmpjdUc8kMcZh-28wO6EBRPNZ/pub?gid=148819163&single=true&output=csv"
+      }
+    },
+    {
+      "key": "wine",
+      "title": "Wine",
+      "type": "wine",
+      "layout": "cards",
+      "csvUrl": {
+        "en": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbbBsIIBl9xIRAguRXzpMczI_FdJRe-tURslWWItFsZUTFxPhVrt0RmpjdUc8kMcZh-28wO6EBRPNZ/pub?gid=302607169&single=true&output=csv"
+      }
+    }
+  ],
+  "sectionsOrder": ["By the Glass", "Champagne and sparkling wine", "White wine", "Rose wine", "Red wine", "Dessert wine", "Half bottles", "Kosher wine", "Large format", "Non alcoholic"],
+  "sectionsOrderByLang": {
+    "en": ["By the Glass", "Champagne and sparkling wine", "White wine", "Rose wine", "Red wine", "Dessert wine", "Half bottles", "Kosher wine", "Large format", "Non alcoholic"]
+  },
+  "csvUrl": {
+    "en": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbbBsIIBl9xIRAguRXzpMczI_FdJRe-tURslWWItFsZUTFxPhVrt0RmpjdUc8kMcZh-28wO6EBRPNZ/pub?gid=302607169&single=true&output=csv"
+  }
+}

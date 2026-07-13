@@ -306,6 +306,14 @@ footer.site{background:var(--panel);color:#D8D8DB;padding:64px 0 32px;}
 .role-tabs{display:flex;gap:8px;margin-bottom:22px;background:var(--bg-soft);padding:4px;border-radius:999px;}
 .role-tab{flex:1;text-align:center;font-size:13px;font-weight:600;padding:8px 0;border-radius:999px;color:var(--ink-soft);border:none;background:transparent;}
 .role-tab.active{background:var(--white);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,0.08);}
+.role-tab:disabled{opacity:0.5;cursor:not-allowed;}
+.modal-error{margin:-8px 0 14px;font-size:13px;font-weight:500;color:#B3261E;}
+.resume-bar{margin-bottom:18px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-m);background:var(--bg-soft);font-size:13px;}
+.resume-bar p{margin:0;color:var(--ink-soft);}
+.resume-bar p + p{margin-top:4px;}
+.resume-bar a{color:var(--accent-deep);font-weight:600;text-decoration:none;}
+.resume-bar a:hover{text-decoration:underline;}
+.role-tab-soon{font-size:9px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:2px 5px;margin-left:4px;border-radius:999px;background:var(--line);color:var(--ink-soft);vertical-align:1px;}
 .modal-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
 .modal-field label{font-size:12.5px;font-weight:600;}
 .modal-field input{border:1px solid var(--line);border-radius:var(--radius-s);padding:11px 12px;font-size:14px;font-family:inherit;}
