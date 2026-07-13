@@ -65,12 +65,41 @@
     });
   }
 
+  // Mobile navigation drawer — below 980px the sidebar sits off-canvas.
+  var sidebar = document.getElementById('dashSidebar');
+  var scrim = document.getElementById('dashScrim');
+  var navToggle = document.getElementById('navToggle');
+  function setNav(open){
+    if(!sidebar) return;
+    sidebar.classList.toggle('open', open);
+    if(scrim) scrim.classList.toggle('open', open);
+    document.body.classList.toggle('dash-nav-open', open);
+    if(navToggle) navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  if(navToggle){
+    navToggle.addEventListener('click', function(){
+      setNav(!sidebar.classList.contains('open'));
+    });
+  }
+  if(scrim){
+    scrim.addEventListener('click', function(){ setNav(false); });
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') setNav(false);
+  });
+  // A widened window puts the sidebar back in the layout grid, so drop the
+  // drawer state with it — otherwise the scroll lock outlives the drawer.
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 980) setNav(false);
+  });
+
   // Page navigation
   var links = document.querySelectorAll('.dash-navlink[data-page]');
   var pages = document.querySelectorAll('.dash-page');
   links.forEach(function(link){
     link.addEventListener('click', function(){
       var target = link.getAttribute('data-page');
+      setNav(false);
       links.forEach(function(l){ l.classList.remove('active'); });
       link.classList.add('active');
       pages.forEach(function(p){
