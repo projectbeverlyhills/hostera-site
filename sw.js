@@ -20,12 +20,16 @@
    Обновление: поднимите CACHE_VERSION при деплое — старые кэши будут удалены.
    ========================================================================== */
 
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const SHELL_CACHE = `hostera-shell-${CACHE_VERSION}`;
 const DATA_CACHE  = `hostera-data-${CACHE_VERSION}`;
-const MENU_BASE = '/winegallery/';
+// Корень сайта — каталог, где лежит сам sw.js. Сайт живёт и в корне домена
+// ('/'), и на подпути (GitHub Pages: '/hostera-site/'), поэтому все пути
+// строим от ROOT, а не от '/'.
+const ROOT = new URL('./', self.location).pathname;
+const MENU_BASE = `${ROOT}winegallery/`;
 const MENU_SHELL = `${MENU_BASE}index.html`;
-const OFFLINE_URL = '/offline.html';
+const OFFLINE_URL = `${ROOT}offline.html`;
 const DATA_CACHE_LIMIT = 60;
 
 // Критичная оболочка. Кэшируем поштучно и терпим отсутствие отдельных файлов,
@@ -35,10 +39,10 @@ const PRECACHE = [
   OFFLINE_URL,
   `${MENU_BASE}waste-mode.css`,
   `${MENU_BASE}waste-mode.js`,
-  '/manifest.webmanifest',
-  '/assets/pwa/icon-192.png',
-  '/assets/pwa/icon-512.png',
-  '/assets/pwa/apple-touch-icon-180.png',
+  `${ROOT}manifest.webmanifest`,
+  `${ROOT}assets/pwa/icon-192.png`,
+  `${ROOT}assets/pwa/icon-512.png`,
+  `${ROOT}assets/pwa/apple-touch-icon-180.png`,
 ];
 
 // ── install: точечный precache + немедленная активация ─────────────────────
@@ -93,11 +97,14 @@ function isShellAsset(url) {
   if (url.origin !== self.location.origin) return false;
   return /\.(?:css|js|png|jpg|jpeg|svg|webp|woff2?|ico|json|webmanifest)$/.test(url.pathname);
 }
-// Меню-навигации: /winegallery/* и pretty-URL ресторанов (/novikov_bh) —
-// один сегмент без точки. Только они офлайн получают оболочку меню.
+// Меню-навигации: <ROOT>winegallery/* и pretty-URL ресторанов
+// (<ROOT>novikov_bh) — один сегмент без точки после корня сайта.
+// Только они офлайн получают оболочку меню.
 function isMenuNavigation(url) {
   if (url.pathname.startsWith(MENU_BASE)) return true;
-  return /^\/[^/.]+\/?$/.test(url.pathname);
+  if (!url.pathname.startsWith(ROOT)) return false;
+  const rest = url.pathname.slice(ROOT.length);
+  return /^[^/.]+\/?$/.test(rest);
 }
 
 async function trimCache(cacheName, limit) {

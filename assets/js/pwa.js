@@ -9,10 +9,17 @@
 (function () {
   'use strict';
 
+  // Корень сайта — на два уровня выше этого скрипта (assets/js/pwa.js).
+  // Сайт живёт и в корне домена ('/'), и на подпути (GitHub Pages:
+  // '/hostera-site/'), поэтому пути от '/' недопустимы — вычисляем базу.
+  var scriptSrc = (document.currentScript && document.currentScript.src) ||
+                  new URL('assets/js/pwa.js', document.baseURI).href;
+  var siteRoot = new URL('../../', scriptSrc);
+
   // --- Регистрация Service Worker ---
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+      navigator.serviceWorker.register(new URL('sw.js', siteRoot), { scope: siteRoot.pathname })
         .catch(function (err) { console.warn('[PWA] SW registration failed:', err); });
     });
   }

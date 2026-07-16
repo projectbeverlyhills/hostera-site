@@ -114,11 +114,16 @@ def make_splash(w, h, dark, out):
 
 # (pt_w, pt_h, dpr) — портретные точки экрана и плотность; px = points × dpr
 IPHONE_SPLASH = [
-    (390, 844, 3),   # 1170×2532 — iPhone 14
+    (375, 667, 2),   # 750×1334  — iPhone 6/7/8 / SE 2/3
+    (414, 736, 3),   # 1242×2208 — iPhone 6/7/8 Plus
+    (375, 812, 3),   # 1125×2436 — X / XS / 11 Pro / 12 mini / 13 mini
+    (414, 896, 2),   # 828×1792  — XR / 11
+    (414, 896, 3),   # 1242×2688 — XS Max / 11 Pro Max
+    (390, 844, 3),   # 1170×2532 — 12 / 12 Pro / 13 / 13 Pro / 14
     (393, 852, 3),   # 1179×2556 — 16 / 15 / 15 Pro / 14 Pro
     (402, 874, 3),   # 1206×2622 — 17 / 17 Pro / 16 Pro
     (420, 912, 3),   # 1260×2736 — iPhone Air
-    (428, 926, 3),   # 1284×2778 — 14 Plus
+    (428, 926, 3),   # 1284×2778 — 12/13 Pro Max / 14 Plus
     (430, 932, 3),   # 1290×2796 — 16 Plus / 15 Pro Max / 15 Plus / 14 Pro Max
     (440, 956, 3),   # 1320×2868 — 17 Pro Max / 16 Pro Max
 ]
@@ -132,11 +137,14 @@ IPAD_SPLASH = [
     (744, 1133, 2),  # 1488×2266 — iPad mini (6/7 gen)
 ]
 
+# href относительный: сайт живёт и в корне домена, и на подпути (GitHub Pages
+# /hostera-site/), поэтому абсолютные пути от '/' недопустимы. Для страниц не в
+# корне сайта (winegallery/index.html) добавляйте префикс ../ при вставке.
 LINK_TMPL = ('  <link rel="apple-touch-startup-image" '
              'media="screen and (device-width:{pw}px) and (device-height:{ph}px) '
              'and (-webkit-device-pixel-ratio:{dpr}) and (orientation:{orient}) '
              'and (prefers-color-scheme:{scheme})" '
-             'href="/assets/pwa/{fname}" />')
+             'href="assets/pwa/{fname}" />')
 
 def gen_splashes():
     """Генерирует PNG и возвращает список готовых <link>-тегов."""
