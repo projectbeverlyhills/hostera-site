@@ -258,17 +258,15 @@
           <div>
             <p class="dash-eyebrow">Module</p>
             <h1 class="dash-h1">Menu</h1>
-            <p class="dash-h1-sub">Build and edit your interactive digital menu, or preview exactly what guests see at the table.</p>
+            <p class="dash-h1-sub">Build and edit your interactive digital menu — the live menu shows exactly what guests see at the table.</p>
           </div>
-          <button class="dbtn dbtn-accent">+ Add section</button>
+          <div class="dash-head-actions">
+            <a class="dbtn dbtn-accent" id="liveMenuLink" href="winegallery/index.html#/novikov_bh" style="display:inline-flex;text-decoration:none;">Open live menu</a>
+            <button class="dbtn dbtn-line">+ Add section</button>
+          </div>
         </div>
 
-        <div class="module-tabs">
-          <span class="module-tab active" data-tab-target="edit">Edit mode</span>
-          <span class="module-tab" data-tab-target="preview">Guest preview</span>
-        </div>
-
-        <div data-tab-panel="edit">
+        <div>
           <div class="dgrid" style="grid-template-columns:260px 1fr;align-items:start;">
             <div class="dcard">
               <p class="panel-link" style="margin-bottom:14px;display:block;">Sections</p>
@@ -299,26 +297,6 @@
           </div>
         </div>
 
-        <div data-tab-panel="preview" style="display:none;">
-          <div class="dcard" style="max-width:420px;padding:0;overflow:hidden;">
-            <div style="background:var(--d-bg-sunken);padding:22px 22px 18px;border-bottom:1px solid var(--d-border);">
-              <p class="d-t-sm d-t-faint mono" style="margin:0 0 4px;">WINE LIST</p>
-              <p style="margin:0;font-size:18px;font-weight:600;">Sancerre, Loire</p>
-            </div>
-            <div style="padding:18px 22px;">
-              <div class="d-flex d-spread" style="padding:14px 0;border-bottom:1px solid var(--d-border-soft);">
-                <div><p style="margin:0;font-weight:600;font-size:14px;">Domaine Vacheron</p><p class="d-t-sm d-t-soft" style="margin:2px 0 0;">2021 · Sauvignon Blanc</p></div>
-                <p class="mono" style="margin:0;color:var(--d-ink-faint);text-decoration:line-through;">$98</p>
-              </div>
-              <div class="d-flex d-spread" style="padding:14px 0;">
-                <div><p style="margin:0;font-weight:600;font-size:14px;">Pascal Cotat "La Grande Côte"</p><p class="d-t-sm d-t-soft" style="margin:2px 0 0;">2020 · Sauvignon Blanc</p></div>
-                <p class="mono" style="margin:0;">$112</p>
-              </div>
-              <p class="d-t-sm d-t-faint d-mt16">Guest view — read only, updates live as you edit.</p>
-            </div>
-          </div>
-          <a class="dbtn dbtn-line" id="liveMenuLink" href="winegallery/index.html#/novikov_bh" style="margin-top:16px;display:inline-flex;text-decoration:none;">Open live menu</a>
-        </div>
       </section>
       <section class="dash-page" id="page-waste">
         <div class="dash-page-head">
@@ -328,8 +306,8 @@
             <p class="dash-h1-sub">Track stock levels, log write-offs, and see what waste is costing you.</p>
           </div>
           <div class="dash-head-actions">
-            <a class="dbtn dbtn-line" id="wasteModeLink" href="winegallery/index.html#/novikov_bh/waste" style="display:inline-flex;text-decoration:none;">Open Waste Mode</a>
-            <button class="dbtn dbtn-accent">+ Log waste entry</button>
+            <a class="dbtn dbtn-accent" id="wasteModeLink" href="winegallery/index.html#/novikov_bh/waste" style="display:inline-flex;text-decoration:none;">Open waste mode</a>
+            <button class="dbtn dbtn-line">+ Log waste entry</button>
           </div>
         </div>
 
