@@ -5,8 +5,11 @@
 Все PNG кладутся рядом со скриптом (assets/pwa/), плюс пишется
 splash-links.html — готовый набор <link rel="apple-touch-startup-image">.
 
-Покрытие: iPhone 14–17 (+ Air) — портрет; iPad (Pro 11/12.9/13, Air, mini,
-iPad 10.2/10.9) — портрет И альбом. Свет + тьма.
+Покрытие: iPhone 14–17 (+ Air) — портрет; iPad (Pro 9.7–13", Air, mini,
+iPad 9.7/10.2/10.9) — портрет И альбом. Свет + тьма. Ландшафтные медиа-запросы
+дублируются с переставленными device-width/height: часть версий iPadOS при
+альбомном запуске сверяет размеры относительно текущей ориентации, и без
+дубля ни один <link> не совпадает — система растягивает портретную картинку.
 
 Шрифт: по умолчанию берётся системный serif (Georgia/Liberation/DejaVu).
 Чтобы получить 100% брендовый вид — положите Fraunces рядом (Fraunces.ttf).
@@ -134,6 +137,8 @@ IPAD_SPLASH = [
     (834, 1194, 2),  # 1668×2388 — iPad Pro 11" (1–4 gen)
     (820, 1180, 2),  # 1640×2360 — iPad Air 10.9"/11", iPad 10/11 gen
     (810, 1080, 2),  # 1620×2160 — iPad 10.2" (7–9 gen)
+    (834, 1112, 2),  # 1668×2224 — iPad Pro 10.5" / Air 3
+    (768, 1024, 2),  # 1536×2048 — iPad 9.7" (5/6 gen), Air 1/2, Pro 9.7", mini 4/5
     (744, 1133, 2),  # 1488×2266 — iPad mini (6/7 gen)
 ]
 
@@ -158,6 +163,10 @@ def gen_splashes():
             make_splash(w, h, dark=(scheme == "dark"), out=fname)
             links.append(LINK_TMPL.format(pw=pw, ph=ph, dpr=dpr, orient=orient,
                                           scheme=scheme, fname=fname))
+            if orient == "landscape":
+                # дубль с переставленными сторонами — см. шапку файла
+                links.append(LINK_TMPL.format(pw=ph, ph=pw, dpr=dpr, orient=orient,
+                                              scheme=scheme, fname=fname))
     for (pw, ph, dpr) in IPHONE_SPLASH:
         emit(pw, ph, dpr, "portrait")
     for (pw, ph, dpr) in IPAD_SPLASH:

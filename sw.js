@@ -20,7 +20,7 @@
    Обновление: поднимите CACHE_VERSION при деплое — старые кэши будут удалены.
    ========================================================================== */
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const SHELL_CACHE = `hostera-shell-${CACHE_VERSION}`;
 const DATA_CACHE  = `hostera-data-${CACHE_VERSION}`;
 // Корень сайта — каталог, где лежит сам sw.js. Сайт живёт и в корне домена
